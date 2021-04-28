@@ -1,0 +1,462 @@
+@import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+body {
+    font-family: Cabin, Verdana;
+    color: #16323E;
+    background-color: #F3EFEF;
+}
+
+h1, h2, h3, nav {
+    font-family: RocknRoll One, Verdana;
+}
+
+nav {
+    background-color: #F3EFEF;
+    position: fixed;
+    padding: 2em 0 0.5em 0;
+    margin-top: -13em;
+    width: 100%;
+    z-index: 10;
+}
+
+nav div a {
+    text-decoration: none;
+    color: #16323E; 
+    margin-left: 2em;
+}
+
+nav div a:hover {
+    border-bottom: 2px solid #16323E;
+}
+
+nav img {
+    width: 7em;
+}
+
+h1:nth-child(2) {
+    margin-top: 6em;
+    margin-left: 30%;
+}
+
+h1 {
+    margin-left: 1em;
+    margin-top: 2em;
+}
+
+#menuButton{
+    display: none;
+}
+
+section {
+    background-color: #77B53E;
+    padding-top: 5em;
+    clip-path: polygon(0 8%, 7% 6%, 14% 5%, 21% 5%, 28% 6%, 34% 8%, 40% 12%, 46% 17%, 50% 20%, 54% 23%, 60% 25%, 66% 26%, 70% 26%, 77% 25%, 83% 23%, 89% 21%, 95% 19%, 100% 17%, 100% 100%, 0% 100%);
+}
+
+
+.fruit {
+    width: 15%;
+    background-color: #F3EFEF;
+    border-radius: 50%;
+    margin-left: 2em;
+    position: absolute;
+    margin-top: -4em;
+    
+}
+
+img {
+    width: 15%;
+    z-index: 9;
+}
+
+section p {
+    margin-left: 30%;
+    margin-right: 10%;
+    margin-top: 3em;
+    padding-bottom: 1em;
+    size: 1.5em;
+    font-size: 1.2em;
+}
+
+section div {
+    margin-left: 30%;
+    margin-bottom: 2em;   
+}
+
+section div a button {
+    font-family: Cabin, Verdana;
+    font-size: 1.2em;
+    background-color: #16323E;
+    color: #F3EFEF;
+    border-radius: 0.7em;
+    border: 2px solid #16323E;
+    padding: 0.5em;
+    margin-bottom: 2em;
+    cursor: pointer;
+}
+
+.medaille {
+    position: absolute;
+    transform: rotate(45deg);
+    margin-left: -1.5em;
+}
+
+.profielfoto {
+    position: absolute;
+    border-radius: 50%;
+    margin-left: 60%;
+    margin-top: -7em;
+    width: 15%;
+    margin-right: 10%;
+}
+
+.gevervandedag {
+    background-color: transparent;
+    clip-path: none;
+}
+
+.gevervandedag p {
+    margin-left: 20%;
+    margin-top: 0;
+}
+
+.gevervandedag p:first-child {
+    font-size: 2em;
+}
+
+.gevervandedag p:last-child {
+    padding-bottom: 3em;
+}
+
+.stap {
+    display: flex;
+    margin: 0;
+    margin-top: 1em;
+}
+
+.stap:nth-child(2) {
+    margin-left: 10%;
+}
+
+.stap:nth-child(3) {
+    margin-left: 20%;
+}
+
+.stap img {
+    width: 4em;
+    margin-left: 2em;
+    margin-top: -3.5em;
+}
+
+.stap p {
+    margin-left: 2em;
+    margin-top: 1.3em;
+}
+
+.stap p:first-child {
+    font-family: RocknRoll One, Verdana;
+    font-size: 3em;
+    margin: 0;
+    margin-left: 2em;
+}
+
+.greens1 {
+    transform: rotate(-90deg);
+    float: right;
+    margin-right: -5em;
+    margin-top: -20em;
+    width: 50%;
+    z-index: -1;
+}
+
+.greens2 {
+    transform: rotate(90deg);
+    position: absolute;
+    margin-left: -15em;
+    width: 50%;
+    z-index: -1;
+}
+
+.center {
+    margin-left: 20%;
+}
+
+.red {
+    background-color: transparent;
+    clip-path: none;
+}
+
+.red .stap:nth-child(3), .red .stap:nth-child(4), .red .stap:nth-child(5) {
+    margin-left: 40%;
+}
+
+.video {
+    color: #F3EFEF;
+    background-color: #16323E;
+    width: 10em;
+    height: 20em;
+    position: absolute;
+    margin-left: -5em;
+    margin-top: 0;
+}
+
+h2 {
+    color: #77B53E;
+    font-size: 10vw;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.spotlight {
+    margin-top: -4em;
+}
+
+.spotlight p {
+    margin-left: 20%;
+}
+
+.spotlight a {
+    background-color: #F3EFEF;
+    padding: 5em;
+    border-radius: 5%;
+}
+
+.spotlight a img {
+    margin-top: 5em;
+    margin-bottom: 4em;
+}
+
+.spotlight button {
+    font-family: Cabin, Verdana;
+    font-size: 1.2em;
+    background-color: #16323E;
+    color: #F3EFEF;
+    border-radius: 0.7em;
+    border: 2px solid #16323E;
+    padding: 0.5em;
+    margin-bottom: 3em;
+    margin-left: 20%;
+    cursor: pointer;
+}
+
+.spotlight div {
+    margin-left: 20%;
+}
+
+.lastsection {
+    background-color: transparent; 
+    clip-path: none;   
+}
+
+.lastsection img:first-child {
+    background-color: #16323E;
+    padding: 13em 5em 13em 5em;
+    margin-left: 25%;
+    margin-top: -5em;
+}
+
+.lastsection div {
+    display: inline-block;
+    margin-left: 10%;
+    font-size: 1.2em;
+}
+
+.lastsection div img {
+    width: 8em;
+}
+
+footer {
+    background-color: #77B53E;
+    padding-top: 5em;
+    clip-path: polygon(0 8%, 7% 6%, 14% 5%, 21% 5%, 28% 6%, 34% 8%, 40% 12%, 46% 17%, 50% 20%, 54% 23%, 60% 25%, 66% 26%, 70% 26%, 77% 25%, 83% 23%, 89% 21%, 95% 19%, 100% 17%, 100% 100%, 0% 100%);
+    margin-top: 5em;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+footer a {
+    text-decoration: none;
+    color: #16323E;
+    margin: 0.5em;
+}
+
+@media (min-width: 660px) {
+    nav div {
+        float: right;
+        margin-right: 2em;
+    }
+
+}
+
+@media (max-width: 660px) {
+    .menu {
+        position: relative;
+        background-color: #16323E;
+        width: 40px;
+        height: 5px;
+        margin-bottom: 0.5em;
+        z-index: 999;
+    }
+    #menuButton {
+        display: inline;
+        position: absolute;
+        right: 0px;
+        margin-right: 3.7em;
+    }
+    .menu:first-child {
+        position:relative;
+        left: -8px;
+        transition: 0.5s;
+    }
+
+    #navWrapper {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(244, 240, 240, 0.9);
+
+        height: 100vh;
+
+        position: fixed;
+        top: 0;
+        left: 100%;
+        transition: 0.3s;
+    }
+    #navWrapper a {
+        width: 100px;
+        margin-top: 2em;
+        margin-right: 5em;
+    }
+
+    #navWrapper a:hover {
+        border: none;
+    }
+
+    #navWrapper a:first-child {
+        margin-top: 5em;
+    }
+
+    #navWrapper:first-child {
+        padding-top: 5em;
+    }
+
+    nav {
+        margin-top: -8.5em;
+    }
+
+    nav img {
+        width: 6em;
+    }
+
+    h1:nth-child(2) {
+        margin-left: 0.5em;
+        margin-top: 4em;
+    }
+
+    h1 {
+        margin-left: 20px;
+    }
+
+    section p {
+        margin-top: 6em;
+        margin-left: 1em;
+    }
+    
+    section div {
+        margin-left: 20px;
+    }
+
+    .fruit {
+        width: 20%;
+        margin-left: 55%;
+        margin-top: 0em;
+    }
+
+    .profielfoto {
+        margin-top: 0;
+        margin-left: 50%;
+        width: 30%;
+    }
+
+    .medaille {
+        width: 8em;
+        margin-top: -2em;
+    }
+
+    .gevervandedag p:first-child {
+        margin-top: 2em;
+        margin-left: 20px;
+    }
+
+    .gevervandedag p {
+        margin-left: 20px;
+    }
+
+    .greens1 {
+        margin-left: 17%;
+        margin-top: -25em;
+        width: 30em;
+        position: absolute;
+    }
+
+    .stap:nth-child(1) {
+        padding-top: 4em;
+    }
+
+    .stap:nth-child(1), .stap:nth-child(2), .stap:nth-child(3) {
+        margin-left: -3em;
+    }
+
+    .greens2 {
+        margin-left: -10em;
+        margin-top: 4em;
+        width: 30em;
+    }
+
+    .red .stap:nth-child(3), .red .stap:nth-child(4), .red .stap:nth-child(5) {
+        margin-left: -3em;
+    }
+
+    .video {
+        position: relative;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .center {
+        margin-left: 20px;
+    }
+    
+    .spotlight p {
+        margin-left: 20px;
+    }
+    
+    .spotlight a img {
+        margin-bottom: 6em;
+    }
+    
+    .spotlight div, 
+    .spotlight button {
+        margin-left: 20px;
+    }
+
+    .lastsection img:first-child {
+        margin-left: 20px;
+        margin-top: -4em;
+    }
+    
+    .lastsection div {
+        margin-left: 20px;
+        margin-top: 1em;
+    }
+    
+    .lastsection div img {
+        width: 6em;
+    }
+
+    footer {
+        margin-top: 1em;
+    }
+}
