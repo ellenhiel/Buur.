@@ -1,0 +1,383 @@
+/*Setting variables that can be used anywhere in this document*/
+:root {
+    --offWhite: #F3EFEF;
+    --offBlack: #1A3541;
+    --accentGreen: #78B53E;
+    --placeholderGrey: #C6C9CB;
+
+    --textFont: 'Cabin', sans-serif;
+    --titleFont: 'RocknRoll One', sans-serif;
+
+    --textFontSize: ; /*bodies of text*/
+    --titleFontSize: 1.4em; /*Text such as the title of a post*/
+    --pageTitleFontSize: 1.1em; /*Full page titles for example "In de buurt"*/
+    --actionBarFontSize: 1.5em; /*The bar at the top size*/
+
+    --whiteSpaceOffset: 3em;
+}
+
+*{
+    font-family: var(--textFont);
+    color: var(--offBlack);
+}
+
+body {
+    height: 100vh;
+    background-color: var(--offWhite);
+}
+
+a{
+    color: var(--offBlack);
+    text-decoration: none;
+}
+
+h1, h2, h3{
+    font-family: var(--titleFont);
+    font-weight: 300;
+    margin: 0;
+
+}
+
+/*General header styling*/
+header {
+    background-color: var(--offWhite);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+
+    padding-left: var(--whiteSpaceOffset);
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+header img {
+    width: 1.3em;
+}
+
+header h2 {
+    margin-left: 0.3em;
+    font-size: var(--actionBarFontSize);
+    flex-grow: 1;
+}
+
+#exit_icon {
+    margin-right: var(--whiteSpaceOffset);
+}
+
+/*General bottom navigation styling*/
+nav {
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--offWhite);
+    
+    position:fixed;
+    width:100%;
+    bottom: 0;
+    right: 0;
+
+    border-top: solid 1px #C0C3C6;
+}
+
+nav img {
+    width: 2.5em;
+    
+    padding-top: 1em;
+    padding-bottom: 0.7em;
+    padding-left: 0.9em;
+    padding-right: 0.9em;
+}
+
+/*General section styling*/
+section{
+    display: flex;
+    flex-direction: column;
+}
+
+/*General form styling*/
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form label {
+    font-size: 1.7em;
+    margin-bottom: 0.3em;
+    margin-top: 0.5em;
+}
+
+form input {
+    border: none;
+    background-color: transparent;
+    font-size: 1.3em;
+}
+
+form input[type=text], input[type=password] {
+    border-bottom: solid 2.5px var(--offBlack);
+    width: 100%;
+}
+
+form input[type=text]:focus, input[type=password]:focus {
+    outline: none;
+}
+
+form input[type=submit] {
+    cursor: pointer;
+    font-family: var(--titleFont);
+    background-color: var(--accentGreen);
+    color: var(--offWhite);
+
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+}
+
+form input::placeholder {
+    color: var(--placeholderGrey);
+}
+
+/* Login/Registration form styling */
+
+.login_registration_section {
+    display: flex;
+    flex-direction: column;
+    
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+
+    height: 80%;
+
+    justify-content: center;
+}
+
+.login_registration_section input[type=submit] {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    width: 80%;
+    border-radius: 25px;
+}
+
+.login_registration_section a {
+    font-family: var(--titleFont);
+    color: var(--accentGreen);
+    text-decoration: underline;
+    
+    text-align: center;
+}
+
+#nav_logo {
+    width: 6.5em;
+    margin-top: 2em;
+}
+
+/*home.php specific styling*/
+.section_header_wrapper {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+    
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+
+    margin-top: 2em;
+
+    font-size: var(--pageTitleFontSize);
+}
+
+.section_header_wrapper img {
+    width: 2em;
+}
+
+#show_more_btn {
+    color: var(--accentGreen);
+    font-family: var(--titleFont);
+    text-decoration: underline;
+    text-align: center;
+    font-size: var(--actionBarFontSize);
+
+    margin-top: 2.5em;
+    margin-bottom: 4em;
+}
+
+/*posts shown on home.php styling*/
+#posts_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+}
+
+.post_wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: var(--offWhite);
+    box-shadow: 0px 8px 23px -8px #00000088;
+
+    margin-top: 3em;
+}
+
+.image_wrapper img {
+    width: 6em;
+    height: 6em;
+
+    display: block;
+    
+    object-fit: cover;
+
+    margin: 0.8em;
+    margin-right: 0;
+}
+
+.info_wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    justify-content: space-between;
+
+    margin-left: 1.2em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+
+    font-size: var(--pageTitleFontSize);
+}
+
+.info_wrapper img {
+    width: calc(100% - 2em);
+}
+
+.location_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.location_wrapper img {
+    width: 1em;
+    margin-right: 0.4em;
+}
+
+.location_wrapper p {
+    font-size: var();
+}
+
+.user_wrapper {
+    margin-right: 0.8em;
+    margin-top: 0.8em;
+}
+
+.user_wrapper img {
+    width: 4em;
+    height: 4em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/*Search page specific styling*/
+.search_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 2em;
+}
+
+.search_section input[type=text] { /*Fancy stuff to get the search icon inside the text field*/
+    background-image: url("/app/assets/icons/search_icon.png");
+    background-repeat: no-repeat;
+    background-size: 1em;
+    background-position: right;
+}
+
+.search_section input[type=submit] {
+    width: 80%;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+
+    border-radius: 20px;
+}
+
+/*Upload page specific styling*/
+.upload_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 2em;
+}
+
+.upload_section #image_input_wrapper {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    border: solid 10px var(--offBlack);
+    border-radius: 10px;
+
+    height: 16em;
+    width: 16em;
+}
+
+.upload_section #image_input_wrapper #image_input {
+    display: none;
+}
+
+.upload_section #btn_submit {
+    background-color: var(--accentGreen);
+    padding: 0.8em;
+    border-radius: 10px;
+    width: 2em;
+
+    position: absolute;
+    bottom: 5em;
+    right: calc(var(--whiteSpaceOffset) - 0.8em);
+}
+
+/*Chats.html specific styling*/
+.messages_section {
+    display: flex;
+    flex-direction: column;
+
+    margin-right: var(--whiteSpaceOffset);
+    margin-left: var(--whiteSpaceOffset);
+}
+
+.message_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message_wrapper .user_image {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+}
+
+.message_wrapper h3 {
+    flex-grow: 1;
+    margin-left: 1em;
+}
+
+.message_wrapper .delete_image {
+    width: 1.5em;
+}
+
+.messages_section .divider {
+    background-color: var(--offBlack);
+    width: 100%;
+    height: 2px;
+    margin-top: 1.2em;
+    margin-bottom: 1.2em;
+}
