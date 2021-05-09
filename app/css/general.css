@@ -63,8 +63,12 @@ header h2 {
     flex-grow: 1;
 }
 
-#exit_icon {
+#exit_icon, #settings_icon {
     margin-right: var(--whiteSpaceOffset);
+}
+
+#settings_icon {
+    width: 2em;
 }
 
 /*General bottom navigation styling*/
@@ -350,6 +354,7 @@ form input::placeholder {
 
     margin-right: var(--whiteSpaceOffset);
     margin-left: var(--whiteSpaceOffset);
+    margin-top: 2em;
 }
 
 .message_wrapper {
@@ -360,8 +365,8 @@ form input::placeholder {
 }
 
 .message_wrapper .user_image {
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     border-radius: 50%;
 }
 
@@ -371,13 +376,174 @@ form input::placeholder {
 }
 
 .message_wrapper .delete_image {
-    width: 1.5em;
+    width: 1.1em;
+    margin-right: 2em;
 }
 
 .messages_section .divider {
     background-color: var(--offBlack);
     width: 100%;
-    height: 2px;
+    height: 1px;
     margin-top: 1.2em;
     margin-bottom: 1.2em;
+}
+
+.messages_section .divider:last-child {
+    display: none;
+}
+
+/*Chat.html specific styling*/
+#chat_section {
+    position: fixed;
+    width: 19.5em;
+
+    left: 50%;
+    transform: translate(-50%, 0); /*Magic code to center a fixed element*/
+
+    bottom: 20px;
+}
+
+#chat_section form input[type=text] {
+    border-bottom: none;
+    background-color: white;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+
+    border-radius: 6px;
+}
+
+#chat_section form input[type=submit] {
+    font-family: var(--textFont);
+    background-color: transparent;
+    color: var(--accentGreen);
+
+    font-size: 1.3em;
+
+    position: relative;
+    right: -120px;
+    top: -55px;
+}
+
+.messenger_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 1.5em;
+}
+
+.messenger_section div {
+    margin-bottom: 0.5em;
+    display: flex;
+}
+
+.messenger_section div img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    margin-left: 0.1em;
+    margin-right: 1em;
+}
+
+.messenger_section div p {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    margin: 0;
+    background-color: white;
+    border-radius: 6px;
+
+    max-width: 12em;
+}
+
+.messenger_section div[data-origin="outgoing"] { /*Fancy selector to apply css to something with specific data-* */
+        display: flex;
+        flex-direction: row-reverse;
+}
+
+.messenger_section div[data-origin="outgoing"] p {
+    color: white;
+    background-color: var(--accentGreen);
+}
+
+/*profile.html specific styling*/
+#user_info_wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 1em;
+}
+
+#user_info_wrapper img {
+    width: 10em;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1em;
+}
+
+#saved_info_wrapper, #reactions_info_wrapper {
+    margin-left: var(--whiteSpaceOffset);
+    margin-top: 1em;
+}
+
+#number_saved_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accentGreen);
+    margin-top: 0.4em;
+    margin-left: calc(var(--whiteSpaceOffset) *-1);
+    padding-left: var(--whiteSpaceOffset);
+    padding-right: var(--whiteSpaceOffset);
+    padding-top: 1.3em;
+    padding-bottom: 1.3em;
+}
+
+#number_saved_wrapper * {
+    color: var(--offWhite);
+}
+
+#number_saved_wrapper h1 {
+    font-size: 5em;
+    margin-right: 0.3em;
+}
+
+#number_saved_wrapper h2 {
+    text-align: center;
+    font-size: 2em;
+    line-height: 1.4em;
+}
+
+#number_reactions_wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1em;
+}
+
+#number_reactions_wrapper h1 {
+    font-size: 3.5em;
+    margin-right: 0.5em;
+}
+
+#btn_more_reactions {
+    background-color: var(--accentGreen);
+    color: var(--offWhite);
+    font-size: 2em;
+    padding: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-radius: 20px;
+
+    margin-top: 1em;
+
+    text-align: center;
+    display: block;
+    margin-left: 15%;
+    margin-right: 15%;
 }
