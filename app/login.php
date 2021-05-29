@@ -1,3 +1,5 @@
+<?php include_once('core/autoload.php');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

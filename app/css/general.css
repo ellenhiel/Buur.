@@ -4,6 +4,7 @@
     --offBlack: #1A3541;
     --accentGreen: #78B53E;
     --placeholderGrey: #C6C9CB;
+    --warningRed: #F66565;
 
     --textFont: 'Cabin', sans-serif;
     --titleFont: 'RocknRoll One', sans-serif;
@@ -63,6 +64,14 @@ header h2 {
     flex-grow: 1;
 }
 
+.green_header {
+    background-color: var(--accentGreen);
+}
+
+.green_header h2 {
+    color: var(--offWhite);
+}
+
 #exit_icon, #settings_icon {
     margin-right: var(--whiteSpaceOffset);
 }
@@ -87,7 +96,7 @@ nav {
 }
 
 nav img {
-    width: 2.5em;
+    width: 2em;
     
     padding-top: 1em;
     padding-bottom: 0.7em;
@@ -204,6 +213,21 @@ form input::placeholder {
     width: 2em;
 }
 
+.section_banner_wrapper {
+    background-color: var(--accentGreen);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    margin-top: 1em;
+}
+
+.section_banner_wrapper p {
+    color: var(--offWhite);
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
 #show_more_btn {
     color: var(--accentGreen);
     font-family: var(--titleFont);
@@ -229,7 +253,7 @@ form input::placeholder {
     background-color: var(--offWhite);
     box-shadow: 0px 8px 23px -8px #00000088;
 
-    margin-top: 3em;
+    margin-top: 1.5em;
 }
 
 .image_wrapper img {
@@ -479,6 +503,12 @@ form input::placeholder {
     margin-top: 1em;
 }
 
+#user_info_wrapper div a {
+    color: var(--accentGreen);
+    text-decoration: underline;
+    font-size: var(--titleFontSize);
+}
+
 #user_info_wrapper img {
     width: 10em;
     border-radius: 50%;
@@ -546,4 +576,162 @@ form input::placeholder {
     display: block;
     margin-left: 15%;
     margin-right: 15%;
+}
+
+/* myListings.html specific styling */
+
+.listing_wrapper {
+    width: 48%;
+    background-color: var(--offWhite);
+    margin-bottom: 1em;
+    margin-top: 1em;
+    border-radius: 7px;
+
+    box-shadow: 0px 8px 23px -8px #00000088;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#listings_section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+}
+
+.listing_wrapper img {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    width: 80%;
+    object-fit: cover;
+    max-height: 7em;
+}
+
+.listing_wrapper h2 {
+    margin-bottom: 0.5em;
+}
+
+.listing_buttons {
+    width: 70%;
+    margin-bottom: 0.4em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listing_buttons img { /*The icons in the buttons*/
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#reactie_title, #verwijder_title {
+    color: var(--offWhite);
+    font-family: var(--titleFont);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.reactie_button {
+    background-color: var(--accentGreen);
+}
+
+.verwijder_button {
+    background-color: var(--warningRed);
+}
+
+#add_listing_button {
+    background-color: var(--accentGreen);
+    color: var(--offWhite);
+    font-size: var(--titleFontSize);
+
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    border-radius: 8px;
+    text-align: center;
+
+    display: block;
+    margin-left: 2.2em; /*For some reason variable whitespaceoffset doesn't work :(*/
+    margin-right: 2.2em;
+
+    margin-top: 2em;
+}
+
+/* settings.html specific styling */
+.profile_edit_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+
+    display: flex;
+    flex-direction: column;
+}
+
+#pfp_input_wrapper {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+#pfp_input_wrapper label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile_edit_section #pfp_preview {
+    width: 50%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile_edit_section #label_text {
+    color: var(--accentGreen);
+    text-decoration: underline;
+    margin: 0;
+    margin-top: 0.3em;
+    font-size: 20px;
+}
+
+.profile_edit_section #pfp_input {
+    display: none;
+}
+
+.profile_edit_section #submit_button {
+    background-color: var(--accentGreen);
+    border-radius: 8px;
+    width: 2.5em;
+    padding: 0.7em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}
+
+#get_premium_button {
+    background: rgb(120,181,62);
+    background: linear-gradient(50deg, rgba(120,181,62,1) 0%, rgba(196,231,43,1) 99%);color: var(--offWhite);
+    font-size: var(--titleFontSize);
+    display: block;
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 3em;
+    text-align: center;
+
+
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+    border-radius: 8px;
 }
