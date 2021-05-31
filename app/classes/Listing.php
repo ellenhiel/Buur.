@@ -64,5 +64,19 @@
             }
         }
 
+        public function submit(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO listings (user_id, title, picture, freshness, date) VALUES (:userId, :title, :picture, :freshness, :date)");
+            
+            $query->bindValue(":userId", $this->userId);
+            $query->bindValue(":picture", $this->picture);
+            $query->bindValue(":title", $this->title);
+            $query->bindValue(":freshness", $this->freshness);
+            $query->bindValue(":date", $this->date);
+
+            $result = $query->execute();
+            return $result; 
+        }
+
     }
 ?>

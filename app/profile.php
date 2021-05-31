@@ -30,7 +30,7 @@
     <div id="user_info_wrapper">
         <img src="profile_pictures/woman.jpg">
         <div>
-            <h1>Eva</h1>
+            <h1><?php echo htmlspecialchars(User::getUsernameById($_SESSION['userId'])); ?></h1>
             <br>
             <a href="myListings.html">Mijn zoekertjes</a>
         </div>
@@ -58,7 +58,7 @@
     <nav>
         <a href="home.php"><img src="assets/icons/home_icon.png"></a>
         <a href="search.html"><img src="assets/icons/search_icon.png"></a>
-        <a href="upload.html"><img src="assets/icons/plus_icon.png"></a>
+        <a href="upload.php"><img src="assets/icons/plus_icon.png"></a>
         <a href="chats.html"><img src="assets/icons/message_icon.png"></a>
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>

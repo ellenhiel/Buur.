@@ -50,6 +50,17 @@
             return $email['id'];
         }
 
+        public static function getUsernameById($userId){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT username FROM users WHERE id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $id = $query->fetch();
+            
+            return $id['username'];
+        }
+
         public static function canLogin($email, $password) {
             $conn = Database::getConnection();
             $query = $conn->prepare("SELECT * FROM users WHERE email = :email");

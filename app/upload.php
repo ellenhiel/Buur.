@@ -1,3 +1,8 @@
+<?php 
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php'); 
+    include_once('posting.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,9 +29,14 @@
         </a>
     </header>
     <!-- end top bar -->
-    
+    <?php if(isset($postOK)): ?>
+            <p>Congrats it's posted!</p>
+    <?php endif; ?>
+    <?php if(isset($error)): ?>
+            <p>errorrr</p>
+    <?php endif; ?>
     <section class="upload_section">
-        <form action="#" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <div id="image_input_wrapper">
                 <label for="image_input">
@@ -37,7 +47,7 @@
 
             <div>
                 <label for="titel">Titel</label>
-                <input type="text" id="titel" name="titel" placeholder="bv. 2 wortels">
+                <input type="text" id="titel" name="title" placeholder="bv. 2 wortels">
             </div>
 
             <div>
@@ -54,7 +64,7 @@
     <nav>
         <a href="home.php"><img src="assets/icons/home_icon.png"></a>
         <a href="search.html"><img src="assets/icons/search_icon.png"></a>
-        <a href="upload.html"><img src="assets/icons/plus_icon.png"></a>
+        <a href="upload.php"><img src="assets/icons/plus_icon.png"></a>
         <a href="chats.html"><img src="assets/icons/message_icon.png"></a>
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
