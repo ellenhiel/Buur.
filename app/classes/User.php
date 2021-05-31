@@ -7,6 +7,7 @@
         private $password;
         private $email;
         private $premium = 0;
+        private $reactions = 0;
 
         const MIN_USERNAME = 5; //Minimum amount of username characters
         const MAX_USERNAME = 20; //Maximum amount of username characters
@@ -38,15 +39,15 @@
             return $this->username;
         }
 
-        public static function getUsernameByEmail($email){
+        public static function getUserIdByEmail($email){
             $conn = Database::getConnection(); 
-            $query = $conn->prepare("SELECT username FROM users WHERE email = :email");
+            $query = $conn->prepare("SELECT id FROM users WHERE email = :email");
             
             $query->bindValue(":email", $email);
             $query->execute();
             $email = $query->fetch();
             
-            return $email["username"];
+            return $email['id'];
         }
 
         public static function canLogin($email, $password) {
@@ -103,6 +104,25 @@
 
         public function getPremium(){
             return $this->premium;
+        }
+
+        public function setReactions($reactions){
+            $this->reactions = $reactions;
+        }
+
+        public function getReactions(){
+            return $this->reactions;
+        }
+
+        public static function getAvailableReactions($userId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM users WHERE id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $reactions = $query->fetch();
+
+            return $reactions['reactions'];
         }
 
         //Checkers for password/username/email

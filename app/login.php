@@ -13,7 +13,7 @@
         if(User::canLogin($email, $password)) {
             $_SESSION['email'] = $email;
             $_SESSION['loggedIn'] = true;
-            $_SESSION['username'] = User::getUsernameByEmail($email);
+            $_SESSION['userId'] = User::getUserIdByEmail($email);
 
             header("Location: home.php");
         } else {

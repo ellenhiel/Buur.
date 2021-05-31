@@ -1,7 +1,7 @@
 
 <?php 
     include_once('core/autoload.php');
-    include_once('isLoggedIn.inc.php');    
+    include_once('isLoggedIn.inc.php'); 
 ;?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +34,7 @@
         </div>
 
         <div class="section_banner_wrapper">
-            <p>Nog 3 reacties beschikbaar</p> <!-- Should represent current amount of reactions left over -->
+            <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reacties beschikbaar</p> <!-- Should represent current amount of reactions left over -->
         </div>
         
         <!-- All posts go in this section -->
