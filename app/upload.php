@@ -3,6 +3,13 @@
     include_once('isLoggedIn.inc.php'); 
     include_once('posting.inc.php');
 ?>
+
+<?php 
+    if(isset($postOK)) {
+        header('Location: home.php');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,12 +36,11 @@
         </a>
     </header>
     <!-- end top bar -->
-    <?php if(isset($postOK)): ?>
-            <p>Congrats it's posted!</p>
-    <?php endif; ?>
+
     <?php if(isset($error)): ?>
-            <p>errorrr</p>
+        <?php echo($error) ?>
     <?php endif; ?>
+
     <section class="upload_section">
         <form action="" method="post" enctype="multipart/form-data">
 

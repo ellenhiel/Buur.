@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 31, 2021 at 01:00 PM
+-- Generation Time: May 31, 2021 at 07:41 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -47,8 +47,18 @@ CREATE TABLE `listings` (
   `user_id` int(255) NOT NULL,
   `title` varchar(255) NOT NULL,
   `listing_image` varchar(255) NOT NULL,
-  `freshness` int(255) NOT NULL
+  `freshness` int(255) NOT NULL,
+  `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `listings`
+--
+
+INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`) VALUES
+(2, 2, 'Minecraft is lit', '2_post_20210531193735.png', 100, '2021-05-31 19:37:35'),
+(3, 2, 'i\'m free ladies', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40'),
+(4, 2, 'i\'m free ladies', '2_post_20210531194109.jpg', 74, '2021-05-31 19:41:09');
 
 -- --------------------------------------------------------
 
@@ -110,7 +120,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

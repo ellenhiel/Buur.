@@ -18,7 +18,7 @@
         }
 
         public function setTitle($title){
-            self::checkTitle():
+            self::checkTitle($title);
             $this->title = $title;
         }  
 
@@ -66,7 +66,7 @@
 
         public function submit(){
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO listings (user_id, title, picture, freshness, date) VALUES (:userId, :title, :picture, :freshness, :date)");
+            $query = $conn->prepare("INSERT INTO listings (user_id, title, listing_image, freshness, date) VALUES (:userId, :title, :picture, :freshness, :date)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":picture", $this->picture);
