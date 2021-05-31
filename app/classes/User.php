@@ -38,6 +38,38 @@
             return $this->username;
         }
 
+        public static function getUsernameByEmail($email){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT username FROM users WHERE email = :email");
+            
+            $query->bindValue(":email", $email);
+            $query->execute();
+            $email = $query->fetch();
+            
+            return $email["username"];
+        }
+
+        public static function canLogin($email, $password) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM users WHERE email = :email");
+            
+            $query->bindValue(":email", $email);
+            $query->execute();
+
+            $user = $query->fetch();
+            $hash = $user['password'];
+
+            if(!$user) {
+                return false;
+            }
+            
+            if(/*password_verify($password, $hash)*/ $password = $user['password']) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function setPassword($password){
             self::checkPassword($password);
             

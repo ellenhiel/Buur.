@@ -1,4 +1,27 @@
-<?php include_once('core/autoload.php');?>
+<?php 
+    include_once('core/autoload.php');
+    session_start();
+    
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
+      header("Location: index.php");   
+    }
+
+    if(isset($_POST["logIn"])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+
+        if(User::canLogin($email, $password)) {
+            $_SESSION['email'] = $email;
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['username'] = User::getUsernameByEmail($email);
+
+            header("Location: home.php");
+        } else {
+            $error = "Email or password is incorrect.";
+        }
+
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +45,7 @@
     </header>
     
     <section class="login_registration_section">
-        <form action="#" method="post">
+        <form action="" method="post">
 
             <div>
                 <label for="email">Email</label>
@@ -34,7 +57,7 @@
                 <input type="password" id="password" name="password" placeholder="************">
             </div>
 
-            <input type="submit" id="btn_submit" value="inloggen">
+            <input type="submit" name="logIn" id="btn_submit" value="inloggen">
 
         </form>
     

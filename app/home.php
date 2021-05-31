@@ -1,3 +1,8 @@
+
+<?php 
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php');    
+;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,7 +144,7 @@
 
     <!-- start bottom navigation -->
     <nav>
-        <a href="home.html"><img src="assets/icons/home_icon.png"></a>
+        <a href="home.php"><img src="assets/icons/home_icon.png"></a>
         <a href="search.html"><img src="assets/icons/search_icon.png"></a>
         <a href="upload.html"><img src="assets/icons/plus_icon.png"></a>
         <a href="chats.html"><img src="assets/icons/message_icon.png"></a>
