@@ -494,7 +494,7 @@ form input::placeholder {
     background-color: var(--accentGreen);
 }
 
-/*profile.html specific styling*/
+/*profile.php specific styling*/
 #user_info_wrapper {
     display: flex;
     align-items: center;

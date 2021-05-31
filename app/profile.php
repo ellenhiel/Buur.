@@ -1,3 +1,7 @@
+<?php 
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php'); 
+;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +47,7 @@
     <div id="reactions_info_wrapper">
         <h2>Deze week heb je nog</h2>
         <div id="number_reactions_wrapper">
-            <h1>3/5</h1>
+            <h1><?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?>/2</h1>
             <h2>gratis reacties</h2>
         </div>
     </div>
@@ -56,7 +60,7 @@
         <a href="search.html"><img src="assets/icons/search_icon.png"></a>
         <a href="upload.html"><img src="assets/icons/plus_icon.png"></a>
         <a href="chats.html"><img src="assets/icons/message_icon.png"></a>
-        <a href="profile.html"><img src="assets/icons/profile_icon.png"></a>
+        <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
 </body>
