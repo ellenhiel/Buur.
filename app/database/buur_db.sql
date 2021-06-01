@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 01, 2021 at 01:39 PM
+-- Generation Time: Jun 01, 2021 at 03:00 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -35,6 +35,15 @@ CREATE TABLE `chats` (
   `message` varchar(255) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `chats`
+--
+
+INSERT INTO `chats` (`id`, `sender_id`, `receiver_id`, `message`, `time`) VALUES
+(1, 2, 4, 'hey heb je die wortelen nog?', '2021-06-01 09:24:13'),
+(2, 4, 2, 'Nee ik heb ze zelf opgegeten haha', '2021-06-02 09:24:13'),
+(3, 2, 5, 'hey heb je die tomaten nog?', '2021-06-02 05:24:13');
 
 -- --------------------------------------------------------
 
@@ -85,7 +94,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
 (1, 'root', 'root', 'root', 'profile_pictures/default.jpg', 0, 0, 0),
 (2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', 'profile_pictures/default.jpg', 0, 2, 5),
-(4, 'Username', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0);
+(4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0),
+(5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -117,7 +127,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `listings`
@@ -129,7 +139,7 @@ ALTER TABLE `listings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -3,7 +3,7 @@
     session_start();
     
     if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"]) {
-      header("Location: index.php");   
+      header("Location: home.php");   
     }
 
     if(isset($_POST["logIn"])) {

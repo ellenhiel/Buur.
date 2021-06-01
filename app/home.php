@@ -2,7 +2,7 @@
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
     $listings = Listing::getListings();
-;?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +79,7 @@
         <a href="home.php"><img src="assets/icons/home_icon.png"></a>
         <a href="search.html"><img src="assets/icons/search_icon.png"></a>
         <a href="upload.php"><img src="assets/icons/plus_icon.png"></a>
-        <a href="chats.html"><img src="assets/icons/message_icon.png"></a>
+        <a href="chats.php"><img src="assets/icons/message_icon.png"></a>
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->

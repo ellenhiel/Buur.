@@ -377,7 +377,7 @@ form input::placeholder {
     right: calc(var(--whiteSpaceOffset) - 0.8em);
 }
 
-/*Chats.html specific styling*/
+/*chats.php specific styling*/
 .messages_section {
     display: flex;
     flex-direction: column;
@@ -422,7 +422,7 @@ form input::placeholder {
     display: none;
 }
 
-/*Chat.html specific styling*/
+/*chat.php specific styling*/
 #chat_section {
     position: fixed;
     width: 19.5em;

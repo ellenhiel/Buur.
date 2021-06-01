@@ -266,6 +266,17 @@
                 return True;
             }
         }
+
+        public static function getChats($userId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chats WHERE receiver_id = :userId OR sender_id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $chats = $query->fetchAll();
+
+            return $chats;
+        }
     }
 
 ?>
