@@ -286,6 +286,12 @@ form input::placeholder {
     width: calc(100% - 2em);
 }
 
+.info_wrapper span {
+    background-image: linear-gradient(90deg, rgba(251,56,56,1) 0.5em, rgba(255,202,116,1) 4em, var(--accentGreen) 8em);;
+    width: calc(100% - 2em);
+    height: 15px;
+}
+
 .location_wrapper {
     display: flex;
     flex-direction: row;
@@ -578,7 +584,7 @@ form input::placeholder {
     margin-right: 15%;
 }
 
-/* myListings.html specific styling */
+/* myListings.php specific styling */
 
 .listing_wrapper {
     width: 48%;

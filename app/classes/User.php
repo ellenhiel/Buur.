@@ -61,6 +61,17 @@
             return $id['username'];
         }
 
+        public static function getProfilePictureById($userId){
+            $conn = Database::getConnection(); 
+            $query = $conn->prepare("SELECT profile_picture FROM users WHERE id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $id = $query->fetch();
+            
+            return $id['profile_picture'];
+        }
+
         public static function canLogin($email, $password) {
             $conn = Database::getConnection();
             $query = $conn->prepare("SELECT * FROM users WHERE email = :email");
@@ -75,7 +86,7 @@
                 return false;
             }
             
-            if(/*password_verify($password, $hash)*/ $password = $user['password']) {
+            if(password_verify($password, $hash)) {
                 return true;
             } else {
                 return false;
@@ -134,6 +145,17 @@
             $reactions = $query->fetch();
 
             return $reactions['reactions'];
+        }
+
+        public static function getSavedProducts($userId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM users WHERE id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $reactions = $query->fetch();
+
+            return $reactions['products_saved'];
         }
 
         //Checkers for password/username/email
@@ -209,6 +231,18 @@
             } else {
                 return True;
             }
+        }
+
+        public function save(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO users (username, password, email) VALUES (:username, :password, :email)");
+            
+            $query->bindValue(":username", $this->username);
+            $query->bindValue(":password", $this->password);
+            $query->bindValue(":email", $this->email);
+
+            $result=$query->execute();
+            return $result;
         }
 
         //Helper function for checkEmail

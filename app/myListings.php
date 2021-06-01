@@ -1,7 +1,8 @@
-<?php 
+<?php
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
-;?>
+    $listings = Listing::getMyListings($_SESSION['userId']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,49 +17,45 @@
      <link rel="stylesheet" href="css/normalize.css">
      <link rel="stylesheet" href="css/general.css">
 
-    <title>Profile</title>
+    <title>myListings</title>
 </head>
 <body>
     <!-- start top bar -->
     <header>
         <img src="assets/location_dot.png">
-        <h2>Mijn profiel</h2>
-        <a href="settings.html"><img id="settings_icon" src="assets/icons/settings_icon.png"></a>
+        <h2>Mijn zoekertjes</h2>
     </header>
     <!-- end top bar -->
     
-    <div id="user_info_wrapper">
-        <img src="<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
-        <div>
-            <h1><?php echo htmlspecialchars(User::getUsernameById($_SESSION['userId'])); ?></h1>
-            <br>
-            <a href="myListings.php">Mijn zoekertjes</a>
+    <section id="listings_section">
+        
+        <?php foreach ($listings as $listing): ?>
+        <!-- start single listing -->
+        <div class="listing_wrapper">
+            <img src="post_uploads/<?php echo $listing['listing_image']; ?>">
+            <h2><?php echo $listing['title']; ?></h2>
+            <div class="listing_buttons reactie_button">
+                <p id="reactie_title">Reacties</p>
+                <img src="assets/icons/message_white_icon.png">
+            </div>
+            <div class="listing_buttons verwijder_button">
+                <p id="verwijder_title">Verwijder</p>
+                <img src="assets/icons/trash_white_icon.png">
+            </div>
         </div>
-    </div>
+        <!-- end single listing -->
+        <?php endforeach; ?>   
 
-    <div id="saved_info_wrapper">
-        <h2>Jij hebt al</h2>
-        <div id="number_saved_wrapper">
-            <h1><?php echo User::getSavedProducts($_SESSION['userId']); ?></h1>
-            <h2>
-            <?php if(User::getSavedProducts($_SESSION['userId']) == "1"): ?>
-            product
-            <?php else: ?>
-            producten
-            <?php endif; ?>
-             <br> gered</h2>
-        </div>
-    </div>
+    </section>
 
-    <div id="reactions_info_wrapper">
-        <h2>Deze week heb je nog</h2>
-        <div id="number_reactions_wrapper">
-            <h1><?php echo User::getAvailableReactions($_SESSION['userId']);?>/2</h1>
-            <h2>gratis reacties</h2>
-        </div>
-    </div>
+    <a href="upload.php" id="add_listing_button">Voeg meer zoekertjes toe!</a>
 
-    <a href="#" id="btn_more_reactions">Meer reacties?</a>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
     <!-- start bottom navigation -->
     <nav>

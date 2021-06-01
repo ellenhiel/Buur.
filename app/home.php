@@ -1,6 +1,7 @@
 <?php 
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
+    $listings = Listing::getListings();
 ;?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,100 +40,32 @@
         <!-- All posts go in this section -->
         <section id="posts_section">
 
-
+            <?php foreach($listings as $listing): ?>
             <!-- Single post start -->
             <div class="post_wrapper">
 
                 <div class="image_wrapper"> <!-- Post image goes here -->
-                    <img src="post_uploads/kiwis.jpg">
+                    <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
                 </div>
 
                 <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                    <h3>Kiwi's!</h3>
+                    <h3><?php echo $listing['title']; ?></h3>
 
                     <div class= "location_wrapper">
                         <img src="assets/location_dot.png">
                         <p>0.5km</p>
                     </div>
-                    
+                    <span style="width:<?php echo 150/100* $listing['freshness'];?>px;></span>
                     <img src="assets/PNG/progressBar.png">
                 </div>
 
                 <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="profile_pictures/woman.jpg">
+                    <img src="<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
                 </div>
 
             </div>
             <!-- Single post end -->
-
-            <div class="post_wrapper">
-
-                <div class="image_wrapper"> <!-- Post image goes here -->
-                    <img src="post_uploads/kiwis.jpg">
-                </div>
-
-                <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                    <h3>Kiwi's!</h3>
-
-                    <div class= "location_wrapper">
-                        <img src="assets/location_dot.png">
-                        <p>0.5km</p>
-                    </div>
-                    
-                    <img src="assets/PNG/progressBar.png">
-                </div>
-
-                <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="profile_pictures/woman.jpg">
-                </div>
-
-            </div>
-
-            <div class="post_wrapper">
-
-                <div class="image_wrapper"> <!-- Post image goes here -->
-                    <img src="post_uploads/kiwis.jpg">
-                </div>
-
-                <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                    <h3>Kiwi's!</h3>
-
-                    <div class= "location_wrapper">
-                        <img src="assets/location_dot.png">
-                        <p>0.5km</p>
-                    </div>
-                    
-                    <img src="assets/PNG/progressBar.png">
-                </div>
-
-                <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="profile_pictures/woman.jpg">
-                </div>
-
-            </div>
-
-            <div class="post_wrapper">
-
-                <div class="image_wrapper"> <!-- Post image goes here -->
-                    <img src="post_uploads/kiwis.jpg">
-                </div>
-
-                <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                    <h3>Kiwi's!</h3>
-
-                    <div class= "location_wrapper">
-                        <img src="assets/location_dot.png">
-                        <p>0.5km</p>
-                    </div>
-                    
-                    <img src="assets/PNG/progressBar.png">
-                </div>
-
-                <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="profile_pictures/woman.jpg">
-                </div>
-
-            </div>
+            <?php endforeach; ?>
 
         </section>
         <!-- End of all posts -->

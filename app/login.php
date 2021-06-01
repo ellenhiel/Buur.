@@ -61,7 +61,7 @@
 
         </form>
     
-        <a href="registration.html">Nog geen account? <br> Registreer hier</a>
+        <a href="registration.php">Nog geen account? <br> Registreer hier</a>
     </section>
 </body>
 </html>

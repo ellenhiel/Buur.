@@ -11,7 +11,7 @@
             if($_FILES["image_input"]["type"] != "image/png"){
                 $fileName = $finalFileName;
             } else {
-                $fileName = $userId."_post_".date("YmdHis").".png";
+                $fileName = $userId."_post_".date("YmdHis").".jpg"; // changed to jpg because saved in map as jpg and in db as png
             }
             
             $fileTmpName  = $_FILES['image_input']['tmp_name'];

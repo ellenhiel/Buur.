@@ -78,5 +78,26 @@
             return $result; 
         }
 
+        public static function getListings(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM listings");
+            
+            $query->execute();
+            $listings = $query->fetchAll();
+            
+            return $listings;
+        }
+
+        public static function getMyListings($userId){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM listings where user_id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $listings = $query->fetchAll();
+            
+            return $listings;
+        }
+
     }
 ?>
