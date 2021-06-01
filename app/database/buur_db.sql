@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 31, 2021 at 07:41 PM
+-- Generation Time: Jun 01, 2021 at 01:39 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -56,9 +56,10 @@ CREATE TABLE `listings` (
 --
 
 INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`) VALUES
-(2, 2, 'Minecraft is lit', '2_post_20210531193735.png', 100, '2021-05-31 19:37:35'),
+(2, 2, 'Minecraft is lit', '2_post_20210531193735.jpg', 100, '2021-05-31 19:37:35'),
 (3, 2, 'i\'m free ladies', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40'),
-(4, 2, 'i\'m free ladies', '2_post_20210531194109.jpg', 74, '2021-05-31 19:41:09');
+(4, 2, 'i\'m free ladies', '2_post_20210531194109.jpg', 74, '2021-05-31 19:41:09'),
+(5, 2, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33');
 
 -- --------------------------------------------------------
 
@@ -73,16 +74,18 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `profile_picture` varchar(255) NOT NULL DEFAULT 'profile_pictures/default.jpg',
   `premium` int(255) NOT NULL DEFAULT '0',
-  `reactions` int(11) NOT NULL DEFAULT '2'
+  `reactions` int(11) NOT NULL DEFAULT '2',
+  `products_saved` int(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`) VALUES
-(1, 'root', 'root', 'root', 'profile_pictures/default.jpg', 0, 0),
-(2, 'ellen', 'ellen', 'ellen@ellen.com', 'profile_pictures/default.jpg', 0, 2);
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
+(1, 'root', 'root', 'root', 'profile_pictures/default.jpg', 0, 0, 0),
+(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', 'profile_pictures/default.jpg', 0, 2, 5),
+(4, 'Username', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -120,13 +123,13 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
