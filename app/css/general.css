@@ -741,3 +741,7 @@ form input::placeholder {
     padding-bottom: 0.6em;
     border-radius: 8px;
 }
+
+.hidden {
+    display: none;
+}

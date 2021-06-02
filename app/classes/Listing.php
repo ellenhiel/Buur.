@@ -6,6 +6,7 @@
         private $picture;
         private $freshness;
         private $date;
+        private $listingId;
         
 
         //Getters/Setters for private variables
@@ -49,6 +50,14 @@
 
         public function getDate(){
             return $this->date;
+        }
+
+        public function setListingid($listingId){
+            $this->listingId = $listingId;
+        }  
+
+        public function getListingId(){
+            return $this->listingId;
         }
 
         //Checks for title/picture
@@ -97,6 +106,18 @@
             $listings = $query->fetchAll();
             
             return $listings;
+        }
+
+        public function deleteListing(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("DELETE FROM listings WHERE id = :listingId and user_id = :userId");
+
+            $query->bindValue(":listingId", $this->getListingId());
+            $query->bindValue(":userId", $this->getUserId());
+            $result = $query->execute();
+
+            return $result;
+
         }
 
     }

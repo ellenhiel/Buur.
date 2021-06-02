@@ -38,7 +38,7 @@
                 <p id="reactie_title">Reacties</p>
                 <img src="assets/icons/message_white_icon.png">
             </div>
-            <div class="listing_buttons verwijder_button">
+            <div class="listing_buttons verwijder_button" data-listing="<?php echo $listing['id']; ?>">
                 <p id="verwijder_title">Verwijder</p>
                 <img src="assets/icons/trash_white_icon.png">
             </div>
@@ -66,5 +66,7 @@
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
+    
+    <script src="js/deleteListing.js"></script>
 </body>
 </html>
