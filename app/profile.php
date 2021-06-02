@@ -28,7 +28,7 @@
     <!-- end top bar -->
     
     <div id="user_info_wrapper">
-        <img src="<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
+        <img src="profile_pictures/<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
         <div>
             <h1><?php echo htmlspecialchars(User::getUsernameById($_SESSION['userId'])); ?></h1>
             <br>

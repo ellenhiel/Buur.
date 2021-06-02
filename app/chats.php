@@ -40,7 +40,7 @@
         ?>
         <!-- Start chats -->
         <a href="chat.php" class="message_wrapper">
-            <img class="user_image" src="profile_pictures/woman.jpg">
+            <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat[$id]); ?>">
             <h3><?php echo htmlspecialchars(User::getUsernameById($chat[$id])); ?></h3>
             <img class="delete_image" src="assets/icons/trash_icon.png">
         </a>

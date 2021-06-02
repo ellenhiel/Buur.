@@ -5,6 +5,7 @@
         private $userId;
         private $username;
         private $password;
+        private $picture;
         private $email;
         private $premium = 0;
         private $reactions = 0;
@@ -37,6 +38,22 @@
 
         public function getUsername(){
             return $this->username;
+        }
+
+        public function setPicture($picture){
+            self::checkPicture($picture);
+            $this->picture = $picture;
+        }  
+
+        public function getPicture(){
+            return $this->picture;
+        }
+
+        //Checks for title/picture
+        private function checkPicture($picture){
+            if ($picture == "") {
+                throw new Exception("You need to upload an image.");
+            }
         }
 
         public static function getUserIdByEmail($email){
@@ -283,6 +300,17 @@
             $query = $conn->prepare("UPDATE users SET username = :username WHERE id = :userId");
     
             $query->bindValue(":username", $this->username);
+            $query->bindValue(":userId", $this->userId);
+            $result = $query->execute();
+            
+            return $result;
+        }
+
+        public function changePicture() {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("UPDATE users SET profile_picture = :picture WHERE id = :userId");
+    
+            $query->bindValue(":picture", $this->picture);
             $query->bindValue(":userId", $this->userId);
             $result = $query->execute();
             

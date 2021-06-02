@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
+                    <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
                 </div>
 
             </div>

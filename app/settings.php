@@ -2,11 +2,57 @@
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
 
+    $userId = $_SESSION['userId'];
+
+    if(!empty($_FILES["pfp_input"]['tmp_name'])) {
+        try {
+            $currentDirectory = getcwd();
+            $uploadDirectory = "/profile_pictures/"; //Directory where image will be located
+
+            $finalFileName = $userId."_picture_".date("YmdHis").".jpg";
+
+            if($_FILES["pfp_input"]["type"] != "image/png"){
+                $fileName = $finalFileName;
+            } else {
+                $fileName = $userId."_picture_".date("YmdHis").".jpg";
+            }
+            
+            $fileTmpName  = $_FILES['pfp_input']['tmp_name'];
+            
+            $user = new User;
+            $user->setPicture($fileName); // $fileName // $_POST['pfp_input']
+            $user->setUserId($userId);
+
+            $user->changePicture();
+            header("Location: profile.php");
+
+            $fileSaveQuality = 80; 
+
+            $uploadPath = $currentDirectory . $uploadDirectory . $fileName;
+
+            move_uploaded_file($fileTmpName, $uploadPath);
+
+            if($_FILES["pfp_input"]["type"] != "image/png"){
+                $imageToResize = imagecreatefromjpeg("profile_pictures/".$fileName);
+            } else {
+                $imageToResize = imagecreatefrompng("profile_pictures/".$fileName);
+                unlink("profile_pictures/".$fileName);
+            }
+
+            imagejpeg($imageToResize, 'profile_pictures/'.$finalFileName, $fileSaveQuality);
+            imageDestroy($imageToResize);
+        }
+
+        catch (Throwable $e) {
+            $error = $e->getMessage();
+        }
+    }     
+    
     if(!empty($_POST['username'])) {
         try {
             $user = new User;
             $user->setUsername($_POST['username']);
-            $user->setUserId($_SESSION['userId']);
+            $user->setUserId($userId);
 
             $user->changeUsername();
             header("Location: profile.php");
@@ -41,12 +87,16 @@
     </header>
     <!-- end top bar -->
 
+    <?php if(isset($error)): ?>
+        <?php echo($error) ?>
+    <?php endif; ?>
+
     <section class="profile_edit_section">
-        <form action="" method="POST">
+        <form action="" method="post" enctype="multipart/form-data">
 
             <div id="pfp_input_wrapper">
                 <label for="pfp_input">
-                    <img id="pfp_preview" for="pfp_input" src="profile_pictures/woman.jpg"> <!--Default needs to be current users pfp-->
+                    <img id="pfp_preview" for="pfp_input" src="profile_pictures/<?php echo User::getProfilePictureById($userId); ?>"> <!--Default needs to be current users pfp-->
                     <p id="label_text">Verander profielfoto</p>
                 </label>
                 <input type="file" name="pfp_input" id="pfp_input" accept="image/png, image/jpeg"/>
@@ -54,7 +104,7 @@
 
             <div>
                 <label for="username">Gebruikersnaam</label>
-                <input type="text" id="username" name="username" placeholder="bv. Maria"> <!-- Default value needs to be the current users username -->
+                <input type="text" id="username" name="username" placeholder="<?php echo User::getUsernameById($userId); ?>"> <!-- Default value needs to be the current users username -->
             </div>
 
             <input type="image" src="assets/icons/checkmark_white.png" alt="Submit" id="submit_button">

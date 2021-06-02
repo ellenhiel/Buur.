@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 01, 2021 at 03:00 PM
+-- Generation Time: Jun 02, 2021 at 02:39 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -66,9 +66,10 @@ CREATE TABLE `listings` (
 
 INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`) VALUES
 (2, 2, 'Minecraft is lit', '2_post_20210531193735.jpg', 100, '2021-05-31 19:37:35'),
-(3, 2, 'i\'m free ladies', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40'),
-(4, 2, 'i\'m free ladies', '2_post_20210531194109.jpg', 74, '2021-05-31 19:41:09'),
-(5, 2, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33');
+(6, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
+(8, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
+(9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
+(10, 2, 'i\'m free ladies', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40');
 
 -- --------------------------------------------------------
 
@@ -81,7 +82,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `profile_picture` varchar(255) NOT NULL DEFAULT 'profile_pictures/default.jpg',
+  `profile_picture` varchar(255) NOT NULL DEFAULT 'default.jpg',
   `premium` int(255) NOT NULL DEFAULT '0',
   `reactions` int(11) NOT NULL DEFAULT '2',
   `products_saved` int(255) NOT NULL DEFAULT '0'
@@ -92,10 +93,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
-(1, 'root', 'root', 'root', 'profile_pictures/default.jpg', 0, 0, 0),
-(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', 'profile_pictures/default.jpg', 0, 2, 5),
-(4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0),
-(5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'profile_pictures/default.jpg', 0, 2, 0);
+(1, 'root', 'root', 'root', 'default.jpg', 0, 0, 0),
+(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602143735.jpg', 0, 2, 5),
+(4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'default.jpg', 0, 2, 0),
+(5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'default.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
@@ -133,7 +134,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
