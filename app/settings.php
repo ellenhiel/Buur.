@@ -1,3 +1,22 @@
+<?php 
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php'); 
+
+    if(!empty($_POST['username'])) {
+        try {
+            $user = new User;
+            $user->setUsername($_POST['username']);
+            $user->setUserId($_SESSION['userId']);
+
+            $user->changeUsername();
+            header("Location: profile.php");
+        }
+
+        catch (Throwable $e) {
+            $error = $e->getMessage();
+        }
+    } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

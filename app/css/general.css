@@ -675,7 +675,7 @@ form input::placeholder {
     margin-top: 2em;
 }
 
-/* settings.html specific styling */
+/* settings.php specific styling */
 .profile_edit_section {
     margin-left: var(--whiteSpaceOffset);
     margin-right: var(--whiteSpaceOffset);

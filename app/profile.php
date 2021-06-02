@@ -23,7 +23,7 @@
     <header>
         <img src="assets/location_dot.png">
         <h2>Mijn profiel</h2>
-        <a href="settings.html"><img id="settings_icon" src="assets/icons/settings_icon.png"></a>
+        <a href="settings.php"><img id="settings_icon" src="assets/icons/settings_icon.png"></a>
     </header>
     <!-- end top bar -->
     

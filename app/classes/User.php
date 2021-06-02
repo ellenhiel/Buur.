@@ -277,6 +277,17 @@
 
             return $chats;
         }
+
+        public function changeUsername() {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("UPDATE users SET username = :username WHERE id = :userId");
+    
+            $query->bindValue(":username", $this->username);
+            $query->bindValue(":userId", $this->userId);
+            $result = $query->execute();
+            
+            return $result;
+        }
     }
 
 ?>
