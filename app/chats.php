@@ -30,18 +30,10 @@
     <section class="messages_section">
 
         <?php foreach($chats as $chat): ?>
-        <?php if($chat['sender_id'] == $_SESSION['userId']){
-                $id = 'receiver_id';
-            } else if($chat['sender_id'] == $chat['receiver_id']) { // say something like if there is a line in the db that has a receiver same as sender
-                $id = 'receiver_id';
-            } else {
-                $id = 'sender_id';
-            }
-        ?>
         <!-- Start chats -->
-        <a href="chat.php" class="message_wrapper">
-            <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat[$id]); ?>">
-            <h3><?php echo htmlspecialchars(User::getUsernameById($chat[$id])); ?></h3>
+        <a href="chat.php?q=<?php echo $chat['sender_id'] ?>" class="message_wrapper">
+            <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat['sender_id']); ?>">
+            <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
             <img class="delete_image" src="assets/icons/trash_icon.png">
         </a>
 

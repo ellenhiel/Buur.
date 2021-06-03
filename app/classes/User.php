@@ -286,7 +286,7 @@
 
         public static function getChats($userId) {
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM chats WHERE receiver_id = :userId OR sender_id = :userId");
+            $query = $conn->prepare("SELECT * FROM chat WHERE receiver_id = :userId");
             
             $query->bindValue(":userId", $userId);
             $query->execute();
