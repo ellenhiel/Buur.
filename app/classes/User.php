@@ -9,6 +9,7 @@
         private $email;
         private $premium = 0;
         private $reactions = 0;
+        private $chatId;
 
         const MIN_USERNAME = 5; //Minimum amount of username characters
         const MAX_USERNAME = 20; //Maximum amount of username characters
@@ -54,6 +55,14 @@
             if ($picture == "") {
                 throw new Exception("You need to upload an image.");
             }
+        }
+
+        public function setChatId($chatId){
+            $this->chatId = $chatId;
+        }
+
+        public function getChatId(){
+            return $this->chatId;
         }
 
         public static function getUserIdByEmail($email){
@@ -293,6 +302,17 @@
             $chats = $query->fetchAll();
 
             return $chats;
+        }
+
+        public function deleteChat(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("DELETE FROM chat WHERE id = :chatId and receiver_id = :userId");
+
+            $query->bindValue(":chatId", $this->getChatId());
+            $query->bindValue(":userId", $this->getUserId());
+            $result = $query->execute();
+
+            return $result;
         }
 
         public function changeUsername() {
