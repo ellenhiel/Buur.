@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 02, 2021 at 02:39 PM
+-- Generation Time: Jun 03, 2021 at 09:22 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -25,13 +25,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `receiver_id` int(255) NOT NULL,
+  `sender_id` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`) VALUES
+(1, 4, 2),
+(2, 2, 4),
+(3, 2, 5),
+(4, 5, 2);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `chats`
 --
 
 CREATE TABLE `chats` (
   `id` int(255) NOT NULL,
-  `sender_id` int(255) NOT NULL,
-  `receiver_id` int(255) NOT NULL,
+  `chat_id_sender` int(255) NOT NULL,
+  `chat_id_receiver` int(255) NOT NULL,
   `message` varchar(255) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,10 +62,10 @@ CREATE TABLE `chats` (
 -- Dumping data for table `chats`
 --
 
-INSERT INTO `chats` (`id`, `sender_id`, `receiver_id`, `message`, `time`) VALUES
-(1, 2, 4, 'hey heb je die wortelen nog?', '2021-06-01 09:24:13'),
-(2, 4, 2, 'Nee ik heb ze zelf opgegeten haha', '2021-06-02 09:24:13'),
-(3, 2, 5, 'hey heb je die tomaten nog?', '2021-06-02 05:24:13');
+INSERT INTO `chats` (`id`, `chat_id_sender`, `chat_id_receiver`, `message`, `time`) VALUES
+(1, 1, 2, 'hey heb je die wortelen nog?', '2021-06-01 09:24:13'),
+(2, 2, 1, 'Nee ik heb ze zelf opgegeten haha', '2021-06-02 09:24:13'),
+(3, 3, 4, 'hey heb je die tomaten nog?', '2021-06-02 05:24:13');
 
 -- --------------------------------------------------------
 
@@ -94,13 +116,19 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
 (1, 'root', 'root', 'root', 'default.jpg', 0, 0, 0),
-(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602143735.jpg', 0, 2, 5),
+(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602150641.jpg', 0, 2, 5),
 (4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'default.jpg', 0, 2, 0),
 (5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'default.jpg', 0, 2, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `chats`
@@ -125,6 +153,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
@@ -134,7 +168,7 @@ ALTER TABLE `chats`
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
