@@ -299,9 +299,9 @@
             
             $query->bindValue(":userId", $userId);
             $query->execute();
-            $chats = $query->fetchAll();
+            $result = $query->fetchAll();
 
-            return $chats;
+            return $result;
         }
 
         public function deleteChat(){
@@ -311,6 +311,30 @@
             $query->bindValue(":chatId", $this->getChatId());
             $query->bindValue(":userId", $this->getUserId());
             $result = $query->execute();
+
+            return $result;
+        }
+
+        // get messages on the left side (from other person)
+        public static function getMessagesLeft($chatId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chats WHERE chat_id_receiver = :chatId");
+            
+            $query->bindValue(":chatId", $chatId);
+            $query->execute();
+            $result = $query->fetchAll();
+
+            return $result;
+        }
+
+        // get messages on the right side (from yourself)
+        public static function getMessagesRight($chatId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chats WHERE chat_id_sender = :chatId");
+            
+            $query->bindValue(":chatId", $chatId);
+            $query->execute();
+            $result = $query->fetchAll();
 
             return $result;
         }

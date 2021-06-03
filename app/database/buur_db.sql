@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 03, 2021 at 09:22 AM
+-- Generation Time: Jun 03, 2021 at 11:08 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -41,8 +41,8 @@ CREATE TABLE `chat` (
 INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`) VALUES
 (1, 4, 2),
 (2, 2, 4),
-(3, 2, 5),
-(4, 5, 2);
+(4, 5, 2),
+(7, 2, 5);
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,10 @@ CREATE TABLE `chats` (
 INSERT INTO `chats` (`id`, `chat_id_sender`, `chat_id_receiver`, `message`, `time`) VALUES
 (1, 1, 2, 'hey heb je die wortelen nog?', '2021-06-01 09:24:13'),
 (2, 2, 1, 'Nee ik heb ze zelf opgegeten haha', '2021-06-02 09:24:13'),
-(3, 3, 4, 'hey heb je die tomaten nog?', '2021-06-02 05:24:13');
+(4, 1, 2, 'Alee waarom heb je dit dan niet verwijderd!!', '2021-06-03 09:24:13'),
+(5, 2, 1, 'Nog geen tijd gehad trut', '2021-06-03 10:00:00'),
+(6, 7, 4, 'hey Thomas heb je die tomaten nog?', '2021-06-02 03:15:13'),
+(7, 4, 7, 'Yess zeker! Wanneer kom je erachter?', '2021-06-02 11:00:00');
 
 -- --------------------------------------------------------
 
@@ -156,13 +159,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `listings`

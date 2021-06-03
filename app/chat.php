@@ -1,6 +1,8 @@
 <?php 
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
+    $messagesLeft = User::getMessagesLeft($_GET['q']);
+    $messagesRight = User::getMessagesRight($_GET['q']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,21 +32,29 @@
     <!-- Start chat messages section -->
     <section class="messenger_section">
         <!-- Example incoming message -->
-        <div class="incoming_message_wrapper">
+        <?php foreach($messagesLeft as $messageLeft): ?>
+        <?php foreach($messagesRight as $messageRight): ?>
+        <?php if(strtotime($messageLeft['time']) < strtotime($messageRight['time'])): ?>
+        
+            <div class="incoming_message_wrapper">
              <img src="profile_pictures/woman.jpg">
             <div data-origin="incoming">
                 <p>
-                    Heey! heb je die wortels nog? ^^
+                    <?php echo $messageLeft['message']; ?>
                 </p>
             </div>
         </div>
-        
+
+        <?php else: ?>
         <!-- Example outgoing message -->
         <div data-origin="outgoing">
             <p>
-                Lol, nee
+                <?php echo $messageRight['message']; ?>
             </p>
         </div>
+        <?php endif; ?>
+        <?php endforeach; ?>
+        <?php endforeach; ?>
     </section>
     <!-- End chat messages section -->
     
