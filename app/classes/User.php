@@ -10,6 +10,8 @@
         private $premium = 0;
         private $reactions = 0;
         private $chatId;
+        private $receiverId;
+        private $message;
 
         const MIN_USERNAME = 5; //Minimum amount of username characters
         const MAX_USERNAME = 20; //Maximum amount of username characters
@@ -63,6 +65,30 @@
 
         public function getChatId(){
             return $this->chatId;
+        }
+
+        public function setReceiverId($receiverId){
+            $this->receiverId = $receiverId;
+        }
+
+        public function getReceiverId(){
+            return $this->receiverId;
+        }
+
+        public function setMessage($message){
+            $this->message = $message;
+        }
+
+        public function getMessage(){
+            return $this->message;
+        }
+
+        public function setDate($date){
+            $this->date = $date;
+        }
+
+        public function getDate(){
+            return $this->date;
         }
 
         public static function getUserIdByEmail($email){
@@ -360,6 +386,59 @@
             
             return $result;
         }
+
+        public function makeChat1(){ // when someone starts a convo
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id) VALUES (:userId, :receiverId)");
+            
+            $query->bindValue(":userId", $this->userId);
+            $query->bindValue(":receiverId", $this->receiverId);
+
+            $result = $query->execute();
+
+            return $result;
+        }
+
+        public function makeChat2(){ // when someone starts a convo
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id) VALUES (:receiverId, :userId)");
+            
+            $query->bindValue(":userId", $this->userId);
+            $query->bindValue(":receiverId", $this->receiverId);
+
+            $result = $query->execute();
+
+            return $result;
+        }
+
+        public function makeMessage1(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO chats (chat_id_sender, chat_id_receiver, message, time) VALUES (:userId, :receiverId, :message, :date)");
+            
+            $query->bindValue(":userId", $this->userId);
+            $query->bindValue(":receiverId", $this->receiverId);
+            $query->bindValue(":message", $this->message);
+            $query->bindValue(":date", $this->date);
+
+            $result = $query->execute();
+
+            return $result;
+        }
+
+        public function makeMessage2(){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("INSERT INTO chats (chat_id_sender, chat_id_receiver, message, time) VALUES (:receiverId, :userId, :message, :date)");
+            
+            $query->bindValue(":userId", $this->userId);
+            $query->bindValue(":receiverId", $this->receiverId);
+            $query->bindValue(":message", $this->message);
+            $query->bindValue(":date", $this->date);
+
+            $result = $query->execute();
+            
+            return $result;
+        }
+
     }
 
 ?>
