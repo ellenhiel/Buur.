@@ -983,3 +983,64 @@ form input::placeholder {
     padding-bottom: 0.1em;
     border-radius: 10px;
 }
+
+/* Individual listing styling */
+#item_section {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+}
+
+#item_section_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#item_section_header img {
+    width: 5em;
+    height: 5em;
+    border-radius: 50%;
+    object-fit: cover;
+
+    margin-right: 1.3em;
+}
+
+#item_section_header div p {
+    font-size: 1.3em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+#item_section_header div p:last-child {
+    font-size: 1.8em;
+}
+
+#item_section_image_wrapper {
+   margin-top: 1em;
+}
+
+#item_section_image_wrapper img {
+    width: 100%;
+    height: 20em;
+    object-fit: cover;
+    display: block;
+}
+
+#item_section_banner {
+    background-color: var(--accentGreen);
+}
+
+#item_section_banner p {
+    color: var(--offWhite);
+    text-align: center;
+    margin: 0;
+}
+
+#item_section_freshness {
+    margin-top: 1.5em;
+}
+
+#item_section_freshness img{
+    width: 100%;
+    height: 20px;
+}
