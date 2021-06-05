@@ -58,7 +58,7 @@
         </div>
     </div>
 
-    <a href="#" id="btn_more_reactions">Meer reacties?</a>
+    <a href="premium.html" id="btn_more_reactions">Meer reacties?</a>
 
     <!-- start bottom navigation -->
     <nav>

@@ -19,8 +19,52 @@
     <header>
         <img src="assets/location_dot.png">
         <h2>Premium</h2>
+        <a href="javascript:javascript:history.go(-1)">
+            <img id="exit_icon" src="assets/icons/exit_icon.png">
+        </a>
     </header>
     <!-- end top bar -->
+
+    <section id="body_section_premium">
+        <h1 id="header_premium">Start vandaag nog met Buur. premium!</h1>
+
+        <div id="benefits_list">
+            <div class="list_item">
+                <img src="assets/icons/list_dot.png">
+                <p>Ontgrendel oneindige reacties</p>
+            </div>
+            <div class="list_item">
+                <img src="assets/icons/list_dot.png">
+                <p>Verkrijg een speciale badge</p>
+            </div>
+            <div class="list_item">
+                <img src="assets/icons/list_dot.png">
+                <p>Steun Buur. en ons doel om nooit meer iets te moeten wegsmijten</p>
+            </div>
+        </div>
+
+        <form action="" method="POST">
+            <input type="radio" id="jaarlijks" name="subscription_type" value="jaarlijks" checked="checked">
+            <input type="radio" id="maandelijks" name="subscription_type" value="maandelijks">
+
+            <div id="subscription_options">
+                <label id="jaarlijks_btn" class="subscription_btn selected" for="jaarlijks">
+                    <div class="subscription_title">Beste deal</div>
+                    <div class="subscription_name">jaarlijks</div>
+                    <div class="subscription_price">€50</div>
+                </label>
+    
+                <label id="maandelijks_btn" class="subscription_btn" for="maandelijks">
+                    <div class="subscription_title">Populair</div>
+                    <div class="subscription_name">maandelijks</div>
+                    <div class="subscription_price">€5</div>
+                </label>
+            </div>
+
+            <input type="submit" value="Ga verder">
+        </form>
+    
+    </section>
 
     <!-- start bottom navigation -->
     <nav>
@@ -31,5 +75,6 @@
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
+    <script src="js/jankPremiumButtons.js"></script>
 </body>
 </html>

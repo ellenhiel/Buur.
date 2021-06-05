@@ -9,7 +9,7 @@
     --textFont: 'Cabin', sans-serif;
     --titleFont: 'RocknRoll One', sans-serif;
 
-    --titleFontSize: 1.4em; /*Text such as the title of a post*/
+    --titleFontSize: 1.9em; /*Text such as the title of a post*/
     --pageTitleFontSize: 1em; /*Full page titles for example "In de buurt"*/
     --actionBarFontSize: 1.5em; /*The bar at the top size*/
 
@@ -253,6 +253,8 @@ form input::placeholder {
 
     background-color: var(--offWhite);
     box-shadow: 0px 8px 23px -8px #00000088;
+
+    border-radius: 10px;
 
     margin-top: 1.5em;
 }
@@ -870,4 +872,114 @@ form input::placeholder {
     height: 2em;
     width: 100%;
     border-radius: 12px;
+}
+
+/* premium specific styling */
+#body_section_premium {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+
+}
+
+#body_section_premium h1 {
+    margin-top: 0.7em;
+    font-size: 1.9em;
+}
+
+#body_section_premium .list_item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#body_section_premium .list_item p{ 
+    margin-left: 0.5em;
+    margin-bottom: 0;
+    font-size: 1.4em;
+}
+
+#body_section_premium .list_item img {
+    position: relative;
+    top: 20px;
+}
+
+#body_section_premium #benefits_list {
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+}
+
+#body_section_premium #jaarlijks, #maandelijks {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#subscription_options {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#body_section_premium .subscription_btn {
+    width: 4.4em;
+    height: 6em;
+    border: var(--placeholderGrey) solid 3px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+
+#body_section_premium .selected {
+    border: var(--accentGreen) solid 3px;
+}
+
+#body_section_premium .subscription_title, .subscription_name, .subscription_price {
+    text-align: center;
+}
+
+#body_section_premium .subscription_title {
+    font-size: 0.6em;
+    color: var(--offWhite);
+    background-color: var(--placeholderGrey);
+    border-radius: 5px;
+    position: relative;
+    top: -10px;
+    width: 90%;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+#body_section_premium .selected .subscription_title{
+    background-color: var(--accentGreen);
+}
+
+#body_section_premium .subscription_name { 
+    font-size: 0.8em;
+    flex-grow: 1;
+}
+
+#body_section_premium .subscription_price {
+    flex-grow: 1;
+    background-color: var(--placeholderGrey);
+    color: var(--offWhite);
+    font-size: 1.7em;
+    padding-top: 20%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#body_section_premium .selected .subscription_price {
+    background-color: var(--accentGreen);
+}
+
+#body_section_premium form input[type="submit"]{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+    border-radius: 10px;
 }
