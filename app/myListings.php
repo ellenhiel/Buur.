@@ -32,7 +32,7 @@
         <?php foreach ($listings as $listing): ?>
         <!-- start single listing -->
         <div class="listing_wrapper">
-            <img src="post_uploads/<?php echo $listing['listing_image']; ?>">
+            <img class="listing_img" src="post_uploads/<?php echo $listing['listing_image']; ?>">
             <h2><?php echo $listing['title']; ?></h2>
             <div class="listing_buttons reactie_button">
                 <p id="reactie_title">Reacties</p>

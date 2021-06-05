@@ -517,6 +517,7 @@ form input::placeholder {
 
 #user_info_wrapper img {
     width: 10em;
+    height: 10em;
     border-radius: 50%;
     object-fit: cover;
     margin-right: 1em;
@@ -618,8 +619,13 @@ form input::placeholder {
     max-height: 7em;
 }
 
+.listing_wrapper .listing_img {
+    height: 10em;
+}
+
 .listing_wrapper h2 {
     margin-bottom: 0.5em;
+    text-align: center;
 }
 
 .listing_buttons {
