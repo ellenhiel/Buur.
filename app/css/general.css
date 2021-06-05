@@ -9,9 +9,8 @@
     --textFont: 'Cabin', sans-serif;
     --titleFont: 'RocknRoll One', sans-serif;
 
-    --textFontSize: ; /*bodies of text*/
     --titleFontSize: 1.4em; /*Text such as the title of a post*/
-    --pageTitleFontSize: 1.1em; /*Full page titles for example "In de buurt"*/
+    --pageTitleFontSize: 1em; /*Full page titles for example "In de buurt"*/
     --actionBarFontSize: 1.5em; /*The bar at the top size*/
 
     --whiteSpaceOffset: 3em;
@@ -211,6 +210,7 @@ form input::placeholder {
 
 .section_header_wrapper img {
     width: 2em;
+    cursor: pointer;
 }
 
 .section_banner_wrapper {
@@ -249,6 +249,7 @@ form input::placeholder {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     background-color: var(--offWhite);
     box-shadow: 0px 8px 23px -8px #00000088;
@@ -275,9 +276,11 @@ form input::placeholder {
 
     justify-content: space-between;
 
-    margin-left: 1.2em;
+    margin-left: -1em;
     margin-top: 0.8em;
     margin-bottom: 0.8em;
+
+    max-width: 6em;
 
     font-size: var(--pageTitleFontSize);
 }
@@ -310,11 +313,12 @@ form input::placeholder {
 .user_wrapper {
     margin-right: 0.8em;
     margin-top: 0.8em;
+    align-self: flex-start;
 }
 
 .user_wrapper img {
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -750,4 +754,120 @@ form input::placeholder {
 
 .hidden {
     display: none;
+}
+
+/* Filter overlay css :) */
+.overlay {
+    background-color: var(--offWhite);
+    width: 100%;
+    height: 0;
+    position: fixed;
+    z-index: 9999999999;
+    left: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay .filter_header {
+    background-color: var(--accentGreen);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: var(--whiteSpaceOffset);
+    padding-right: var(--whiteSpaceOffset);
+    height: 5em;
+
+}
+
+.overlay .filter_header h2 {
+    color: var(--offWhite);
+    font-size: var(--actionBarFontSize);
+}
+
+#filter_form {
+    margin-left: var(--whiteSpaceOffset);
+    margin-right: var(--whiteSpaceOffset);
+    margin-top: 2em;
+}
+
+#filter_form .filter_section div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 0.5em;
+}
+
+#filter_form .filter_section div input[type="radio"] {
+    content: url(../assets/icons/radio_unchecked.png);
+    width: 1.5em;
+    height: 1.5em;
+    appearance: none;
+}
+
+#filter_form .filter_section div input[type="radio"]:checked {
+    content: url(../assets/icons/radio_checked.png);
+}
+
+#filter_form .filter_section div input[type="checkbox"] {
+    content: url(../assets/icons/box_unchecked.png);
+    width: 1.5em;
+    height: 1.5em;
+    appearance: none;
+}
+
+#filter_form .filter_section div input[type="checkbox"]:checked {
+    content: url(../assets/icons/box_checked.png);
+    background-color: transparent;
+}
+
+#filter_form .filter_section div input {
+    margin-right: 1em;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
+}
+
+#filter_form .filter_section div:last-child {
+    margin-bottom: 1.5em;
+}
+
+#filter_form .filter_section div label {
+    font-size: 1.3em;
+}
+
+#filter_form .filter_section .distance_slider_header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#filter_form .filter_section div input[type="range"] {
+    width: 100%;
+    margin-right: 0;
+    appearance: none;
+    background-color: var(--offBlack);
+    border-radius: 20px;
+    height: 0.2em;
+    outline: none;
+    margin-top: 1em;
+}
+
+#filter_form .filter_section div input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    background-color: var(--accentGreen);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+#filter_form .filter_section div input[type="range"]::-webkit-slider-runnable-track{
+    appearance: none;
+    color: var(--warningRed);
+}
+
+#filter_form input[type="submit"] {
+    height: 2em;
+    width: 100%;
+    border-radius: 12px;
 }

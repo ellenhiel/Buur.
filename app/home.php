@@ -27,10 +27,68 @@
     </header>
     <!-- end top bar -->
 
+    <!-- start overlay div -->
+    <div id="filter_overlay" class="overlay">
+        <div class="filter_header">
+            <h2>Filters</h2>
+            <img id="filter_close_icon" src="assets/icons/exit_white_icon.png">
+        </div>
+
+        <form id="filter_form" action="" method="get">
+
+            <div class="filter_section">
+                <h2>Sorteer op</h2>
+                
+                <div>
+                    <input type="radio" id="versheid" name="sortBy" value="versheid" checked="checked">
+                    <label for="versheid">Versheid</label>
+                </div>
+                
+                <div>
+                    <input type="radio" id="afstand" name="sortBy" value="afstand">
+                    <label for="afstand">Afstand</label>
+                </div>
+            </div>
+
+            <div class="filter_section">
+                <h2>Toon enkel</h2>
+                
+                <div>
+                    <input type="checkbox" id="fruit" name="sortBy" value="fruit">
+                    <label for="fruit">Fruit</label>
+                </div>
+                
+                <div>
+                    <input type="checkbox" id="groenten" name="sortBy" value="groenten">
+                    <label for="groenten">Groenten</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="andere" name="sortBy" value="andere">
+                    <label for="andere">Andere</label>
+                </div>
+            </div>
+
+            <div class="filter_section">
+                <div class="distance_slider_header">
+                    <h2>Maximum afstand</h2>
+                    <h3><span id="range_output">20</span> km</h3> <!-- Moet de accurate afstand weergeven -->
+                </div>
+                
+                <div>
+                    <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="sortBy" value="20">
+                </div>
+            </div>
+
+            <input type="submit" value="Toepassen">            
+        </form>
+
+    </div>
+
     <section>
         <div class="section_header_wrapper">
             <h1>In de buurt</h1>
-            <img src="assets/icons/filter_icon.png">
+            <img id="filter_icon" src="assets/icons/filter_icon.png">
         </div>
 
         <div class="section_banner_wrapper">
@@ -83,5 +141,7 @@
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
+
+    <script src="js/filterOverlay.js"></script>
 </body>
 </html>
