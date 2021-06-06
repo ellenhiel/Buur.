@@ -806,6 +806,17 @@ form input::placeholder {
     border-radius: 8px;
 }
 
+#logout_button {
+    color: var(--warningRed);
+    text-decoration: underline;
+    font-size: 1.3em;
+
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 .hidden {
     display: none;
 }
