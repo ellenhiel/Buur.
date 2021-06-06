@@ -354,6 +354,12 @@ form input::placeholder {
     margin-top: 2em;
 }
 
+.upload_section #imagePreview {
+    height: 10.2em;
+    width: 10.2em;
+    object-fit: cover;
+}
+
 .upload_section #image_input_wrapper {
     display: flex;
     flex-direction: column;
@@ -369,7 +375,7 @@ form input::placeholder {
 }
 
 .upload_section #image_input_wrapper #image_input {
-    display: none;
+    height: 0;
 }
 
 .upload_section #btn_submit {
