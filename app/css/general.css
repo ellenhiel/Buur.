@@ -378,9 +378,31 @@ form input::placeholder {
     border-radius: 10px;
     width: 2em;
 
-    position: absolute;
+    position: fixed;
     bottom: 5em;
     right: calc(var(--whiteSpaceOffset) - 0.8em);
+}
+
+#upload_radio div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#upload_radio div label {
+    font-size: 1.5em;
+    padding-left: 0.7em;
+}
+
+#upload_radio input[type="radio"] {
+    content: url(../assets/icons/radio_unchecked.png);
+    width: 1.5em;
+    height: 1.5em;
+    appearance: none;
+}
+
+#upload_radio input[type="radio"]:checked {
+    content: url(../assets/icons/radio_checked.png);
 }
 
 /*chats.php specific styling*/
