@@ -6,6 +6,7 @@
         private $picture;
         private $freshness;
         private $date;
+        private $category;
         private $listingId;
         
 
@@ -52,6 +53,14 @@
             return $this->date;
         }
 
+        public function setCategory($category){
+            $this->category = $category;
+        }
+
+        public function getCategory(){
+            return $this->category;
+        }
+
         public function setListingid($listingId){
             $this->listingId = $listingId;
         }  
@@ -75,13 +84,14 @@
 
         public function submit(){
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO listings (user_id, title, listing_image, freshness, date) VALUES (:userId, :title, :picture, :freshness, :date)");
+            $query = $conn->prepare("INSERT INTO listings (user_id, title, listing_image, freshness, date, category) VALUES (:userId, :title, :picture, :freshness, :date, :category)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":picture", $this->picture);
             $query->bindValue(":title", $this->title);
             $query->bindValue(":freshness", $this->freshness);
             $query->bindValue(":date", $this->date);
+            $query->bindValue(":category", $this->category);
 
             $result = $query->execute();
             return $result; 
@@ -89,7 +99,47 @@
 
         public static function getListings(){
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM listings");
+            $query = $conn->prepare("SELECT * FROM listings LIMIT 10");
+            
+            $query->execute();
+            $listings = $query->fetchAll();
+            
+            return $listings;
+        }
+
+        //Distance still needs to be done
+        public static function getListingsByFilters($sortBy, $type, $distance){
+            $conn = Database::getConnection();
+
+            if ($sortBy == "recent") {
+
+                if (count($type) == 3) {
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT 100");
+                } elseif (count($type) == 2) {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY date DESC LIMIT 100");
+                } else {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY date DESC LIMIT 100");
+                }
+
+            } else {
+                if (count($type) == 3) {
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY freshness DESC LIMIT 100");
+                } elseif (count($type) == 2) {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY freshness DESC LIMIT 100");
+                } else {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY freshness DESC LIMIT 100");
+                }
+            }
+
+            $query->execute();
+            $listings = $query->fetchAll();
+
+            return $listings;
+        }
+
+        public static function getMorePosts($start, $end) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM listings LIMIT ".$start.", ".$end);
             
             $query->execute();
             $listings = $query->fetchAll();

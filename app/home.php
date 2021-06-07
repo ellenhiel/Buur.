@@ -2,6 +2,14 @@
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
     $listings = Listing::getListings();
+
+    if (!empty($_GET)) {
+        $sortBy = $_GET["sortBy"];
+        $type = $_GET["type"];
+        $distance = $_GET["distance"];
+        
+        $listings = Listing::getListingsByFilters($sortBy, $type, $distance);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,33 +46,34 @@
 
             <div class="filter_section">
                 <h2>Sorteer op</h2>
+
+                <div>
+                    <input type="radio" id="afstand" name="sortBy" value="recent" checked="checked">
+                    <label for="recent">Recent</label>
+                </div>
                 
                 <div>
-                    <input type="radio" id="versheid" name="sortBy" value="versheid" checked="checked">
+                    <input type="radio" id="versheid" name="sortBy" value="versheid">
                     <label for="versheid">Versheid</label>
                 </div>
-                
-                <div>
-                    <input type="radio" id="afstand" name="sortBy" value="afstand">
-                    <label for="afstand">Afstand</label>
-                </div>
+            
             </div>
 
             <div class="filter_section">
                 <h2>Toon enkel</h2>
                 
                 <div>
-                    <input type="checkbox" id="fruit" name="sortBy" value="fruit">
+                    <input type="checkbox" id="fruit" name="type[]" value="fruit" checked="check">
                     <label for="fruit">Fruit</label>
                 </div>
                 
                 <div>
-                    <input type="checkbox" id="groenten" name="sortBy" value="groenten">
+                    <input type="checkbox" id="groenten" name="type[]" value="groenten" checked="check">
                     <label for="groenten">Groenten</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="andere" name="sortBy" value="andere">
+                    <input type="checkbox" id="andere" name="type[]" value="andere" checked="check">
                     <label for="andere">Andere</label>
                 </div>
             </div>
@@ -76,7 +85,7 @@
                 </div>
                 
                 <div>
-                    <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="sortBy" value="20">
+                    <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="distance" value="20">
                 </div>
             </div>
 
@@ -126,8 +135,12 @@
 
         </section>
         <!-- End of all posts -->
-
-        <a href="#" id="show_more_btn">Toon meer</a>
+        
+        <?php if(empty($_GET)): ?>
+            <a href="#" id="show_more_btn">Toon meer</a>
+        <?php else:?>
+            <br><br><br><br><br><br>
+        <?php endif; ?>
 
     </section>
 
@@ -142,5 +155,6 @@
     <!-- end bottom navigation -->
 
     <script src="js/filterOverlay.js"></script>
+    <script src="js/showMore.js"></script>
 </body>
 </html>

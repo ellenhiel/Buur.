@@ -22,6 +22,7 @@
             $listing->setTitle($_POST['title']);
             $listing->setFreshness($_POST['quality']);
             $listing->setDate(date("Y-m-d H:i:s"));
+            $listing->setCategory($_POST['category']);
 
             $listing->submit();  
 
