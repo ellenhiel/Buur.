@@ -163,11 +163,7 @@
         </section>
         <!-- End of all posts -->
         
-        <?php if(empty($_GET)): ?>
-            <a href="#" id="show_more_btn">Toon meer</a>
-        <?php else:?>
-            <br><br><br><br><br><br>
-        <?php endif; ?>
+        <a href="#" id="show_more_btn">Toon meer</a>
 
     </section>
 

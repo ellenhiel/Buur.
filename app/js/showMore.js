@@ -3,12 +3,23 @@ var currentlyShownPosts = 10; //Default amount of posts shown
 
 var post_section = document.querySelector("#posts_section");
 
+var link = window.location.href;
+
+var GET = getUrlVariables(link);
+
 btnShowMore.addEventListener("click", function(e){
 
     var formData = new FormData();
     formData.append("postStart", currentlyShownPosts);
     currentlyShownPosts = currentlyShownPosts + 10; //Add 10 to increase the max (So next time it'll be 20 to 30)
     formData.append("postEnd", currentlyShownPosts);
+    if(GET){
+        formData.append("filters", GET);
+    } else {
+        formData.append("filters", "0");
+    }
+
+    console.log(GET);
 
     fetch("./ajax/loadMore.php", {
         method: "POST",
@@ -16,6 +27,7 @@ btnShowMore.addEventListener("click", function(e){
     })
         .then(response => response.json())
         .then(result => {
+            console.log(result);
             for(var i = 0; i < result["result"].length; i++){
                 var post = createPostDiv(result["result"][i]);
 
@@ -46,4 +58,49 @@ function createPostDiv(item) {
     "</div>"+
     "</div>";
     return post_wrapper;
+}
+
+function getUrlVariables(link) {
+    var GETArray = [];
+    var isThereGET = false;
+    var typeArray = [];
+
+    if(link.includes("recent")){
+        GETArray.push("recent")
+        isThereGET = true;
+    } else if(link.includes("versheid")) {
+        GETArray.push("versheid");
+    }
+
+    if(link.includes("fruit")){
+        typeArray.push("fruit");
+        isThereGET = true;
+    }
+
+    if(link.includes("groenten")){
+        typeArray.push("groenten");
+        isThereGET = true;
+    }
+
+    if(link.includes("andere")){
+        typeArray.push("andere");
+        isThereGET = true;
+    }
+
+    if(link.includes("distance")){
+        var distance = link.slice(-2);
+        if(distance.includes("=")){
+            distance = distance.slice(-1);
+        }
+        GETArray.push(distance);
+        isThereGET = true;
+    }
+
+    GETArray.push(typeArray);
+    
+    if(isThereGET){
+        return GETArray;
+    } else {
+        return false;
+    }
 }

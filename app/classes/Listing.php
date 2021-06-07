@@ -99,7 +99,7 @@
 
         public static function getListings(){
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM listings LIMIT 10");
+            $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT 10");
             
             $query->execute();
             $listings = $query->fetchAll();
@@ -125,20 +125,20 @@
             if ($sortBy == "recent") {
 
                 if (count($type) == 3) {
-                    $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT 10");
                 } elseif (count($type) == 2) {
-                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY date DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY date DESC LIMIT 10");
                 } else {
-                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY date DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY date DESC LIMIT 10");
                 }
 
             } else {
                 if (count($type) == 3) {
-                    $query = $conn->prepare("SELECT * FROM listings ORDER BY freshness DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY freshness DESC LIMIT 10");
                 } elseif (count($type) == 2) {
-                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY freshness DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY freshness DESC LIMIT 10");
                 } else {
-                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY freshness DESC LIMIT 100");
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY freshness DESC LIMIT 10");
                 }
             }
 
@@ -155,6 +155,44 @@
             $query->execute();
             $listings = $query->fetchAll();
             
+            return $listings;
+        }
+
+        public static function getMorePostsFilter($start, $end, $filters) {
+            $conn = Database::getConnection();
+
+            $filtersArray = explode(',',$filters);
+
+            $sortBy = $filtersArray[0];
+            $distance = $filtersArray[1];
+
+            unset($filtersArray[0]); //unset -> remove the values from the array
+            unset($filtersArray[1]);
+
+            $type = array_values($filtersArray); // array_values -> only returns the existing values inside an array thus removing the first two indexes
+
+            if ($sortBy == "recent") {
+                if (count($type) == 3) {
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT ".$start.", ".$end);
+                } elseif (count($type) == 2) {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY date DESC LIMIT ".$start.", ".$end);
+                } else {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY date DESC LIMIT ".$start.", ".$end);
+                }
+
+            } else {
+                if (count($type) == 3) {
+                    $query = $conn->prepare("SELECT * FROM listings ORDER BY freshness DESC LIMIT ".$start.", ".$end);
+                } elseif (count($type) == 2) {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." OR category = ". "'" . $type[1] . "'" ." ORDER BY freshness DESC LIMIT ".$start.", ".$end);
+                } else {
+                    $query = $conn->prepare("SELECT * FROM listings WHERE category= ". "'" . $type[0] . "'" ." ORDER BY freshness DESC LIMIT ".$start.", ".$end);
+                }
+            }
+
+            $query->execute();
+            $listings = $query->fetchAll();
+
             return $listings;
         }
 
