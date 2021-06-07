@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 03, 2021 at 11:08 AM
+-- Generation Time: Jun 07, 2021 at 03:07 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -68,7 +68,9 @@ INSERT INTO `chats` (`id`, `chat_id_sender`, `chat_id_receiver`, `message`, `tim
 (4, 1, 2, 'Alee waarom heb je dit dan niet verwijderd!!', '2021-06-03 09:24:13'),
 (5, 2, 1, 'Nog geen tijd gehad trut', '2021-06-03 10:00:00'),
 (6, 7, 4, 'hey Thomas heb je die tomaten nog?', '2021-06-02 03:15:13'),
-(7, 4, 7, 'Yess zeker! Wanneer kom je erachter?', '2021-06-02 11:00:00');
+(7, 4, 7, 'Yess zeker! Wanneer kom je erachter?', '2021-06-02 11:00:00'),
+(8, 2, 4, 'Hey', '2021-06-05 13:07:30'),
+(9, 4, 2, 'Hey', '2021-06-05 13:07:30');
 
 -- --------------------------------------------------------
 
@@ -82,19 +84,27 @@ CREATE TABLE `listings` (
   `title` varchar(255) NOT NULL,
   `listing_image` varchar(255) NOT NULL,
   `freshness` int(255) NOT NULL,
-  `date` datetime NOT NULL
+  `date` datetime NOT NULL,
+  `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `listings`
 --
 
-INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`) VALUES
-(2, 2, 'Minecraft is lit', '2_post_20210531193735.jpg', 100, '2021-05-31 19:37:35'),
-(6, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
-(8, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
-(9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33'),
-(10, 2, 'i\'m free ladies', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40');
+INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`, `category`) VALUES
+(2, 2, 'andere enzo :)', '2_post_20210531193735.jpg', 100, '2021-05-31 19:37:35', 'andere'),
+(6, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
+(8, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
+(9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
+(10, 2, 'nice fruit yes', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40', 'fruit'),
+(11, 2, 'Cola', '2_post_20210607133201.jpg', 100, '2021-06-07 13:32:01', 'andere'),
+(12, 2, 'appel cider', '2_post_20210607133535.jpg', 100, '2021-06-07 13:35:35', 'andere'),
+(13, 2, '2 zakjes witte thee', '2_post_20210607133555.jpg', 100, '2021-06-07 13:35:55', 'andere'),
+(14, 2, 'Bruine suiker', '2_post_20210607133612.jpg', 72, '2021-06-07 13:36:12', 'andere'),
+(15, 2, 'Ananas :)', '2_post_20210607133628.jpg', 31, '2021-06-07 13:36:28', 'fruit'),
+(16, 2, 'worteltjes', '2_post_20210607133643.jpg', 72, '2021-06-07 13:36:43', 'groenten'),
+(18, 2, 'Bailey 4 sale', '2_post_20210607142136.jpg', 100, '2021-06-07 14:21:36', 'andere');
 
 -- --------------------------------------------------------
 
@@ -159,19 +169,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `users`
