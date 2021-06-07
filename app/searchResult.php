@@ -36,11 +36,12 @@
 
     <section>
         <div class="section_header_wrapper">
-            <h1>Zoekresultaten voor "<?php echo $input ?>"</h1>
-        </div>
-
-        <div class="section_banner_wrapper">
-            <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reacties beschikbaar</p> <!-- Should represent current amount of reactions left over -->
+            <?php if(!empty($listings)): ?>
+                <h1>Zoekresultaten voor "<?php echo $input ?>"</h1>
+            <?php else: ?>
+                <h1>Er zijn geen zoekresultaten voor "<?php echo $input ?>"</h1>
+                <a href="search.php">Klik hier om opnieuw te proberen</a>
+            <?php endif; ?>
         </div>
         
         <!-- All posts go in this section -->
