@@ -1,3 +1,12 @@
+<?php
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php');
+    if(!empty($_GET)){
+        $input = $_GET['q'];
+        header("Location: searchResult.php?q=" . $input);
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,9 +32,9 @@
     <!-- end top bar -->
     
     <section class="search_section">
-        <form action="#" method="post">
+        <form action="" method="get">
 
-            <input type="text" id="username" name="username" placeholder="Zoek hier">
+            <input type="text" id="username" name="q" placeholder="Zoek hier">
 
             <input type="submit" id="btn_submit" value="Zoeken">
 
@@ -35,7 +44,7 @@
     <!-- start bottom navigation -->
     <nav>
         <a href="home.php"><img src="assets/icons/home_icon.png"></a>
-        <a href="search.html"><img src="assets/icons/search_icon.png"></a>
+        <a href="search.php"><img src="assets/icons/search_icon.png"></a>
         <a href="upload.php"><img src="assets/icons/plus_icon.png"></a>
         <a href="chats.php"><img src="assets/icons/message_icon.png"></a>
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>

@@ -181,5 +181,16 @@
 
         }
 
+        public static function search($input) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM listings WHERE title LIKE CONCAT( '%', :input, '%')");
+            
+            $query->bindValue(":input", $input);
+            $query->execute();
+            $listings = $query->fetchAll();
+            
+            return $listings;
+        }
+
     }
 ?>

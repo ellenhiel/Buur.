@@ -1,15 +1,14 @@
 <?php 
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
-    $listings = Listing::getListings();
 
-    if (!empty($_GET)) {
-        $sortBy = $_GET["sortBy"];
-        $type = $_GET["type"];
-        $distance = $_GET["distance"];
-        
-        $listings = Listing::getListingsByFilters($sortBy, $type, $distance);
+    if(!empty($_GET)){
+        $input = $_GET['q'];
+        $listings = Listing::search($input);
+    } else {
+        header("Location: home.php");
     }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,69 +34,9 @@
     </header>
     <!-- end top bar -->
 
-    <!-- start overlay div -->
-    <div id="filter_overlay" class="overlay">
-        <div class="filter_header">
-            <h2>Filters</h2>
-            <img id="filter_close_icon" src="assets/icons/exit_white_icon.png">
-        </div>
-
-        <form id="filter_form" action="" method="get">
-
-            <div class="filter_section">
-                <h2>Sorteer op</h2>
-
-                <div>
-                    <input type="radio" id="afstand" name="sortBy" value="recent" checked="checked">
-                    <label for="recent">Recent</label>
-                </div>
-                
-                <div>
-                    <input type="radio" id="versheid" name="sortBy" value="versheid">
-                    <label for="versheid">Versheid</label>
-                </div>
-            
-            </div>
-
-            <div class="filter_section">
-                <h2>Toon enkel</h2>
-                
-                <div>
-                    <input type="checkbox" id="fruit" name="type[]" value="fruit" checked="check">
-                    <label for="fruit">Fruit</label>
-                </div>
-                
-                <div>
-                    <input type="checkbox" id="groenten" name="type[]" value="groenten" checked="check">
-                    <label for="groenten">Groenten</label>
-                </div>
-
-                <div>
-                    <input type="checkbox" id="andere" name="type[]" value="andere" checked="check">
-                    <label for="andere">Andere</label>
-                </div>
-            </div>
-
-            <div class="filter_section">
-                <div class="distance_slider_header">
-                    <h2>Maximum afstand</h2>
-                    <h3><span id="range_output">20</span> km</h3> <!-- Moet de accurate afstand weergeven -->
-                </div>
-                
-                <div>
-                    <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="distance" value="20">
-                </div>
-            </div>
-
-            <input type="submit" value="Toepassen">            
-        </form>
-
-    </div>
-
     <section>
         <div class="section_header_wrapper">
-            <h1>In de buurt</h1>
-            <img id="filter_icon" src="assets/icons/filter_icon.png">
+            <h1>Zoekresultaten voor "<?php echo $input ?>"</h1>
         </div>
 
         <div class="section_banner_wrapper">
