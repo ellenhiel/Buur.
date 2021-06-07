@@ -48,12 +48,20 @@
                 <h2>Sorteer op</h2>
 
                 <div>
-                    <input type="radio" id="afstand" name="sortBy" value="recent" checked="checked">
+                    <?php if(empty($_GET) || $_GET["sortBy"] == "recent"): ?>
+                        <input type="radio" id="afstand" name="sortBy" value="recent" checked="checked">
+                    <?php else: ?>
+                        <input type="radio" id="afstand" name="sortBy" value="recent">
+                    <?php endif; ?>
                     <label for="recent">Recent</label>
                 </div>
                 
                 <div>
-                    <input type="radio" id="versheid" name="sortBy" value="versheid">
+                    <?php if(!empty($_GET) && $_GET["sortBy"] == "versheid"): ?>
+                        <input type="radio" id="versheid" name="sortBy" value="versheid" checked="checked">
+                    <?php else: ?>
+                        <input type="radio" id="versheid" name="sortBy" value="versheid">
+                    <?php endif; ?>
                     <label for="versheid">Versheid</label>
                 </div>
             
@@ -63,17 +71,29 @@
                 <h2>Toon enkel</h2>
                 
                 <div>
-                    <input type="checkbox" id="fruit" name="type[]" value="fruit" checked="check">
+                    <?php if(empty($_GET) || in_array("fruit", $_GET["type"])): ?>
+                        <input type="checkbox" id="fruit" name="type[]" value="fruit" checked="check">
+                    <?php else: ?>
+                        <input type="checkbox" id="fruit" name="type[]" value="fruit">
+                    <?php endif; ?>
                     <label for="fruit">Fruit</label>
                 </div>
                 
                 <div>
-                    <input type="checkbox" id="groenten" name="type[]" value="groenten" checked="check">
+                    <?php if(empty($_GET) || in_array("groenten", $_GET["type"])): ?>
+                        <input type="checkbox" id="groenten" name="type[]" value="groenten" checked="check">
+                    <?php else: ?>
+                        <input type="checkbox" id="groenten" name="type[]" value="groenten">
+                    <?php endif; ?>
                     <label for="groenten">Groenten</label>
                 </div>
 
                 <div>
-                    <input type="checkbox" id="andere" name="type[]" value="andere" checked="check">
+                    <?php if(empty($_GET) || in_array("andere", $_GET["type"])): ?>
+                        <input type="checkbox" id="andere" name="type[]" value="andere" checked="check">
+                    <?php else: ?>
+                        <input type="checkbox" id="andere" name="type[]" value="andere">
+                    <?php endif; ?>
                     <label for="andere">Andere</label>
                 </div>
             </div>
@@ -81,11 +101,19 @@
             <div class="filter_section">
                 <div class="distance_slider_header">
                     <h2>Maximum afstand</h2>
-                    <h3><span id="range_output">20</span> km</h3> <!-- Moet de accurate afstand weergeven -->
+                    <?php if(isset($_GET["distance"])): ?>
+                        <h3><span id="range_output"><?php echo($_GET["distance"]); ?></span> km</h3> <!-- Moet de accurate afstand weergeven -->
+                    <?php else: ?>
+                        <h3><span id="range_output">20</span> km</h3> <!-- Moet de accurate afstand weergeven -->
+                    <?php endif; ?>
                 </div>
                 
                 <div>
-                    <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="distance" value="20">
+                    <?php if(isset($_GET["distance"])): ?>
+                        <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="distance" value="<?php echo($_GET["distance"]); ?>">
+                    <?php else: ?>
+                        <input id="range_slider" type="range" min="1" max="40" id="max_afstand" name="distance" value="20">
+                    <?php endif; ?>
                 </div>
             </div>
 
