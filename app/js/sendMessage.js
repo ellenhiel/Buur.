@@ -20,6 +20,7 @@ function message(e){
     })
         .then(response => response.json())
         .then(result => {
+            console.log(result);
 
             // empty input
             message2.value = "";

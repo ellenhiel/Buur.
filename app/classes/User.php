@@ -411,7 +411,7 @@
             return $result;
         }
 
-        public function makeMessage1(){
+        public function makeMessage(){
             $conn = Database::getConnection();
             $query = $conn->prepare("INSERT INTO chats (chat_id_sender, chat_id_receiver, message, time) VALUES (:userId, :receiverId, :message, :date)");
             
@@ -422,20 +422,6 @@
 
             $result = $query->execute();
 
-            return $result;
-        }
-
-        public function makeMessage2(){
-            $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO chats (chat_id_sender, chat_id_receiver, message, time) VALUES (:receiverId, :userId, :message, :date)");
-            
-            $query->bindValue(":userId", $this->userId);
-            $query->bindValue(":receiverId", $this->receiverId);
-            $query->bindValue(":message", $this->message);
-            $query->bindValue(":date", $this->date);
-
-            $result = $query->execute();
-            
             return $result;
         }
 

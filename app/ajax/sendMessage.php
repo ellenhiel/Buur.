@@ -12,13 +12,12 @@
             $user->setMessage($message);
             $user->setDate(date("Y-m-d H:i:s"));
 
-            $result1 = $user->makeMessage1();
-            $result2 = $user->makeMessage2();
+            $result = $user->makeMessage();
 
             $text = $message;
         }
 
-        if($result1 && $result2){
+        if($result){
             $response = [
                 "input" => $text,
                 "status" => "Success"
