@@ -1,3 +1,9 @@
+<?php 
+    include_once('core/autoload.php');
+    include_once('isLoggedIn.inc.php'); 
+    $listing = Listing::getListing($_GET['q']);
+    $chat = User::getChat($_SESSION['userId']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +18,7 @@
      <link rel="stylesheet" href="css/normalize.css">
      <link rel="stylesheet" href="css/general.css">
 
-    <title>Premium</title>
+    <title><?php echo htmlspecialchars($listing['title']); ?></title>
 </head>
 <body>
     <!-- start top bar -->
@@ -27,22 +33,21 @@
 
     <section id="item_section">
         <div id="item_section_header">
-            <img src="profile_pictures/woman.jpg">
+            <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
             <div>
-                <p>Kim geeft:</p>
-                <p>Boontjes</p>
+                <p><?php echo htmlspecialchars(User::getUsernameById($listing['user_id'])); ?> geeft:</p>
+                <p><?php echo htmlspecialchars($listing['title']); ?></p>
             </div>
         </div>
 
         <div id="item_section_image_wrapper">
-            <img src="post_uploads/beans.png">
+            <img src="post_uploads/<?php echo htmlspecialchars($listing['listing_image']); ?>">
             <div id="item_section_banner">
-                <p>Nog 2 reacties beschikbaar</p>
+                <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reacties beschikbaar</p>
             </div>
         </div>
 
-        <div id="item_section_freshness">
-            <img src="assets/PNG/progressBar.png">
+        <div id="item_section_freshness" style="width:<?php echo 100/100* $listing['freshness'];?>%;">
         </div>
 
         <div id="item_section_location">
@@ -50,7 +55,7 @@
             <p>0.5km van jou verwijderd</p>
         </div>
         <br><br><br><br><br><br><br><br>
-        <a href="#" id="item_section_reactbtn">Stuur een bericht</a>
+        <a href="" data-receiver="<?php echo $listing['user_id']; ?>" id="item_section_reactbtn" onclick="makeChat(event)">Stuur een bericht</a>
     </section>
 
     <!-- start bottom navigation -->
@@ -62,5 +67,6 @@
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
+    <script src="js/makeChat.js"></script>
 </body>
 </html>

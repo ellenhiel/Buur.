@@ -1101,6 +1101,9 @@ form input::placeholder {
 
 #item_section_freshness {
     margin-top: 1.5em;
+    background-image: linear-gradient(90deg, rgba(251,56,56,1) 1em, rgba(255,202,116,1) 10em, var(--accentGreen) 20em);;
+    width: 100%;
+    height: 15px;
 }
 
 #item_section_freshness img{

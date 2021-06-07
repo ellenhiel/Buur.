@@ -109,7 +109,7 @@
 
             <?php foreach($listings as $listing): ?>
             <!-- Single post start -->
-            <div class="post_wrapper">
+            <a href="individualListing.php?q=<?php echo $listing['id'] ?>"><div class="post_wrapper">
 
                 <div class="image_wrapper"> <!-- Post image goes here -->
                     <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
@@ -128,8 +128,7 @@
                 <div class="user_wrapper"> <!-- Post owner goes here -->
                     <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
                 </div>
-
-            </div>
+            </div></a>
             <!-- Single post end -->
             <?php endforeach; ?>
 

@@ -330,6 +330,45 @@
             return $result;
         }
 
+        public static function getChat($userId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chat WHERE receiver_id = :userId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $result = $query->fetch();
+
+            return $result;
+        }
+
+        public static function openChat($userId, $receiverId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chat WHERE receiver_id = :userId AND sender_id = :receiverId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->bindValue(":receiverId", $receiverId);
+            $query->execute();
+            $result = $query->fetch();
+
+            return $result;
+        }
+
+        public static function chatExists($userId, $receiverId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chat WHERE receiver_id = :userId AND sender_id = :receiverId");
+            
+            $query->bindValue(":userId", $userId);
+            $query->bindValue(":receiverId", $receiverId);
+            $query->execute();
+            $result = $query->fetch();
+
+            if($result) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         public function deleteChat(){
             $conn = Database::getConnection();
             $query = $conn->prepare("DELETE FROM chat WHERE id = :chatId and receiver_id = :userId");

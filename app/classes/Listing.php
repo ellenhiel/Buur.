@@ -107,6 +107,17 @@
             return $listings;
         }
 
+        public static function getListing($listingId){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM listings WHERE id = :listingId");
+            
+            $query->bindValue(":listingId", $listingId);            
+            $query->execute();
+            $listings = $query->fetch();
+            
+            return $listings;
+        }
+
         //Distance still needs to be done
         public static function getListingsByFilters($sortBy, $type, $distance){
             $conn = Database::getConnection();
