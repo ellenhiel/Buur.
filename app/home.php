@@ -113,8 +113,7 @@
                         <img src="assets/location_dot.png">
                         <p>0.5km</p>
                     </div>
-                    <span style="width:<?php echo 150/100* $listing['freshness'];?>px;></span>
-                    <img src="assets/PNG/progressBar.png">
+                    <span style="width:<?php echo 150/100* $listing['freshness'];?>px;"></span>
                 </div>
 
                 <div class="user_wrapper"> <!-- Post owner goes here -->
