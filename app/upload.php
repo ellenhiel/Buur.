@@ -61,6 +61,22 @@
                 <input type="range" id="quality" name="quality" min="0" max="100" step="1" >
             </div>
 
+            <div id="upload_radio">
+                <label>Categorie</label>
+                <div>
+                    <input type="radio" name="category" id="groenten" value="groenten" checked="checked">
+                    <label for="groenten">Groenten</label>
+                </div>
+                <div>
+                    <input type="radio" name="category" id="fruit" value="fruit">
+                    <label for="fruit">Fruit</label>
+                </div>
+                <div>
+                    <input type="radio" name="category" id="andere" value="andere">
+                    <label for="andere">Andere</label>
+                </div>
+            </div>
+            <br><br><br><br><br>
             <input type="image" src="assets/icons/checkmark_white.png" alt="Submit" id="btn_submit">
 
         </form>
@@ -75,5 +91,7 @@
         <a href="profile.php"><img src="assets/icons/profile_icon.png"></a>
     </nav>
     <!-- end bottom navigation -->
+
+    <script src="js/imagePreview.js"></script>
 </body>
 </html>
