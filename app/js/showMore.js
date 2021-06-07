@@ -27,12 +27,16 @@ btnShowMore.addEventListener("click", function(e){
     })
         .then(response => response.json())
         .then(result => {
-            console.log(result);
             for(var i = 0; i < result["result"].length; i++){
                 var post = createPostDiv(result["result"][i]);
 
                 post_section.append(post);
             }
+
+            if(result["result"].length == 0){
+                btnShowMore.innerHTML = "Er zijn geen resultaten meer!";
+            }
+
         })
         .catch(error => {
             console.error("Error:", error);
