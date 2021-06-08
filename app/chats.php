@@ -41,13 +41,6 @@
         <?php if(count($chats) == 0): ?>
             <img id="noMessagePlaceholder" src="assets/icons/no_messages_icon.png">
         <?php else: ?>
-            <?php foreach($chats as $chat): ?>
-                <!-- Start chats -->
-                <a href="chat.php?q=<?php echo $chat['receiver_id']; ?>?&b=<?php echo $chat['sender_id']; ?>" class="message_wrapper">
-                    <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat['sender_id']); ?>">
-                    <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
-                    <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $chat['id']; ?>">
-                </a>
             <?php if(isset($_GET['listingId']) && $listingIdChats): ?> <!-- start specific listing when set -->
 
                 <?php foreach($listingIdChats as $listingIdChat): ?>
@@ -75,10 +68,6 @@
                 <?php endforeach; ?>
 
             <?php endif; ?>
-
-            <div class="divider"></div>
-            <!-- End chats -->
-            <?php endforeach; ?>
         <?php endif; ?>
     </section>
 
