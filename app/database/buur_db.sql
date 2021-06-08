@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 07, 2021 at 03:07 PM
+-- Generation Time: Jun 08, 2021 at 12:25 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -31,18 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `receiver_id` int(255) NOT NULL,
-  `sender_id` int(255) NOT NULL
+  `sender_id` int(255) NOT NULL,
+  `listing_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `chat`
 --
 
-INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`) VALUES
-(1, 4, 2),
-(2, 2, 4),
-(4, 5, 2),
-(7, 2, 5);
+INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`, `listing_id`) VALUES
+(4, 5, 2, 2),
+(7, 2, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -69,8 +68,7 @@ INSERT INTO `chats` (`id`, `chat_id_sender`, `chat_id_receiver`, `message`, `tim
 (5, 2, 1, 'Nog geen tijd gehad trut', '2021-06-03 10:00:00'),
 (6, 7, 4, 'hey Thomas heb je die tomaten nog?', '2021-06-02 03:15:13'),
 (7, 4, 7, 'Yess zeker! Wanneer kom je erachter?', '2021-06-02 11:00:00'),
-(8, 2, 4, 'Hey', '2021-06-05 13:07:30'),
-(9, 4, 2, 'Hey', '2021-06-05 13:07:30');
+(10, 2, 5, 'hey :)', '2021-06-08 12:20:56');
 
 -- --------------------------------------------------------
 
@@ -85,26 +83,25 @@ CREATE TABLE `listings` (
   `listing_image` varchar(255) NOT NULL,
   `freshness` int(255) NOT NULL,
   `date` datetime NOT NULL,
-  `category` varchar(255) NOT NULL
+  `category` varchar(255) NOT NULL,
+  `longitude` varchar(255) NOT NULL,
+  `latitude` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `listings`
 --
 
-INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`, `category`) VALUES
-(2, 2, 'andere enzo :)', '2_post_20210531193735.jpg', 100, '2021-05-31 19:37:35', 'andere'),
-(6, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
-(8, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
-(9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
-(10, 2, 'nice fruit yes', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40', 'fruit'),
-(11, 2, 'Cola', '2_post_20210607133201.jpg', 100, '2021-06-07 13:32:01', 'andere'),
-(12, 2, 'appel cider', '2_post_20210607133535.jpg', 100, '2021-06-07 13:35:35', 'andere'),
-(13, 2, '2 zakjes witte thee', '2_post_20210607133555.jpg', 100, '2021-06-07 13:35:55', 'andere'),
-(14, 2, 'Bruine suiker', '2_post_20210607133612.jpg', 72, '2021-06-07 13:36:12', 'andere'),
-(15, 2, 'Ananas :)', '2_post_20210607133628.jpg', 31, '2021-06-07 13:36:28', 'fruit'),
-(16, 2, 'worteltjes', '2_post_20210607133643.jpg', 72, '2021-06-07 13:36:43', 'groenten'),
-(18, 2, 'Bailey 4 sale', '2_post_20210607142136.jpg', 100, '2021-06-07 14:21:36', 'andere');
+INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, `date`, `category`, `longitude`, `latitude`) VALUES
+(6, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten', '4.4811461', '51.0376046'),
+(8, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten', '4.4811461', '51.0376046'),
+(9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten', '4.4811461', '51.0376046'),
+(10, 2, 'nice fruit yes', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40', 'fruit', '4.4811461', '51.0376046'),
+(12, 2, 'appel cider', '2_post_20210607133535.jpg', 100, '2021-06-07 13:35:35', 'andere', '4.4811461', '51.0376046'),
+(15, 2, 'Ananas :)', '2_post_20210607133628.jpg', 31, '2021-06-07 13:36:28', 'fruit', '4.4811461', '51.0376046'),
+(16, 2, 'worteltjes', '2_post_20210607133643.jpg', 72, '2021-06-07 13:36:43', 'groenten', '4.4811461', '51.0376046'),
+(18, 2, 'Bailey 4 sale', '2_post_20210607142136.jpg', 100, '2021-06-07 14:21:36', 'andere', '4.5151643', '51.0093617'),
+(20, 2, 'wortels met loc', '2_post_20210608112555.jpg', 50, '2021-06-08 11:25:55', 'groenten', '4.4738033', '51.0221707');
 
 -- --------------------------------------------------------
 
@@ -129,8 +126,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
 (1, 'root', 'root', 'root', 'default.jpg', 0, 0, 0),
-(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602150641.jpg', 0, 2, 5),
-(4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'default.jpg', 0, 2, 0),
+(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602150641.jpg', 0, 1, 6),
+(4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'default.jpg', 0, 1, 1),
 (5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'default.jpg', 0, 2, 0);
 
 --
@@ -175,13 +172,13 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `listings`
 --
 ALTER TABLE `listings`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
