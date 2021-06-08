@@ -7,6 +7,12 @@ var link = window.location.href;
 
 var GET = getUrlVariables(link);
 
+var userLat;
+var userLon;
+
+var geolocation = navigator.geolocation;
+geolocation.getCurrentPosition(getLocation, errorHandler);
+
 btnShowMore.addEventListener("click", function(e){
 
     var formData = new FormData();
@@ -46,6 +52,7 @@ btnShowMore.addEventListener("click", function(e){
 });
 
 function createPostDiv(item) {
+    var distance = getDistance(item["latitude"], item["longitude"], userLat, userLon);
     var a_post_wrapper = document.createElement("a");
     a_post_wrapper.setAttribute('href', 'individualListing.php?q=' + item["id"]);
     var post_wrapper = document.createElement("div");
@@ -55,7 +62,7 @@ function createPostDiv(item) {
     "<h3>"+ item["title"] +"</h3>"+
     "<div class= 'location_wrapper'>"+
     "<img src='assets/location_dot.png'>"+
-    "<p>0.5km</p>"+
+    "<p>"+ distance +"km</p>"+
     "</div>"+
     "<span style='width:"+ 150/100*item["freshness"] +"px;'></span>"+
     "</div>"+
@@ -111,4 +118,32 @@ function getUrlVariables(link) {
     } else {
         return false;
     }
+}
+
+function getDistance(lat1, lon1, lat2, lon2){
+    var R = 6371; // Radius of the earth in km
+    var dLat = deg2rad(lat2-lat1);  // deg2rad below
+    var dLon = deg2rad(lon2-lon1); 
+    var a = 
+        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+        Math.sin(dLon/2) * Math.sin(dLon/2)
+        ; 
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    var distance = R * c; // Distance in km
+
+    return distance.toFixed(1);
+}
+
+function deg2rad(deg) {
+    return deg * (Math.PI/180)
+  }
+
+function errorHandler() {
+    console.error("whoopsiedaisy");
+}
+
+function getLocation(position){
+    userLat = position.coords.latitude;
+    userLon = position.coords.longitude;
 }
