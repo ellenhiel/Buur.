@@ -145,7 +145,11 @@
         </div>
 
         <div class="section_banner_wrapper">
-            <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reacties beschikbaar</p> <!-- Should represent current amount of reactions left over -->
+            <?php if(User::getAvailableReactions($_SESSION['userId']) == 1): ?>
+                <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reactie beschikbaar</p> <!-- Should represent current amount of reactions left over -->
+            <?php else: ?>
+                <p>Nog <?php echo htmlspecialchars(User::getAvailableReactions($_SESSION['userId']));?> reacties beschikbaar</p> <!-- Should represent current amount of reactions left over -->
+            <?php endif; ?>  
         </div>
         
         <!-- All posts go in this section -->

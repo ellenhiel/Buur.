@@ -4,6 +4,7 @@
 
     $allMessages = User::getAllMessages($_GET['q'], $_GET['b']);
     $chatIds = User::getChatIdByReceiverSender($_GET['q'], $_GET['b']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

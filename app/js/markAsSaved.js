@@ -15,7 +15,7 @@ markButton.addEventListener("click", function(e){
     .then(response => response.json())
     .then(result => {
         console.log(result);
-        window.location.replace("http://localhost:8888/buur/app/home.php");
+        window.location.href = "home.php";
     })
     .catch(error => {
         console.error("Error:", error);

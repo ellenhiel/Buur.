@@ -405,6 +405,14 @@
             $query->bindValue(":receiver", $receiver);
             $result = $query->execute();
 
+            //Decrease amount reactions counter
+            $conn = Database::getConnection();
+            $query = $conn->prepare("UPDATE users SET reactions = reactions - 1 WHERE id = :sender OR id = :receiver");
+
+            $query->bindValue(":sender", $sender);
+            $query->bindValue(":receiver", $receiver);
+            $result = $query->execute();
+
             return $result;
         }
 
