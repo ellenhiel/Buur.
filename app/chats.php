@@ -38,7 +38,7 @@
 
     <section class="messages_section">
 
-        <?php if(count($chats) == 0): ?>
+        <?php if(count($chats) == 0 && !isset($_GET['listingId'])): ?>
             <img id="noMessagePlaceholder" src="assets/icons/no_messages_icon.png">
         <?php else: ?>
             <?php if(isset($_GET['listingId']) && $listingIdChats): ?> <!-- start specific listing when set -->
