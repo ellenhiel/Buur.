@@ -46,6 +46,8 @@ btnShowMore.addEventListener("click", function(e){
 });
 
 function createPostDiv(item) {
+    var a_post_wrapper = document.createElement("a");
+    a_post_wrapper.setAttribute('href', 'individualListing.php?q=' + item["id"]);
     var post_wrapper = document.createElement("div");
     post_wrapper.classList.add("post_wrapper");
     post_wrapper.innerHTML = "<div class='image_wrapper'><img src='post_uploads/"+ item["listing_image"] +"'></div>" + 
@@ -61,7 +63,9 @@ function createPostDiv(item) {
     "<img src='profile_pictures/"+ item[7] +"'>"+
     "</div>"+
     "</div>";
-    return post_wrapper;
+    a_post_wrapper.append(post_wrapper);
+    console.log(a_post_wrapper);
+    return a_post_wrapper;
 }
 
 function getUrlVariables(link) {

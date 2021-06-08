@@ -137,26 +137,28 @@
 
             <?php foreach($listings as $listing): ?>
             <!-- Single post start -->
-            <a href="individualListing.php?q=<?php echo $listing['id'] ?>"><div class="post_wrapper">
+            <a href="individualListing.php?q=<?php echo $listing['id'] ?>">
+                <div class="post_wrapper">
 
-                <div class="image_wrapper"> <!-- Post image goes here -->
-                    <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
-                </div>
-
-                <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                    <h3><?php echo $listing['title']; ?></h3>
-
-                    <div class= "location_wrapper">
-                        <img src="assets/location_dot.png">
-                        <p>0.5km</p>
+                    <div class="image_wrapper"> <!-- Post image goes here -->
+                        <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
                     </div>
-                    <span style="width:<?php echo 150/100* $listing['freshness'];?>px;"></span>
-                </div>
 
-                <div class="user_wrapper"> <!-- Post owner goes here -->
-                    <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
+                    <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
+                        <h3><?php echo $listing['title']; ?></h3>
+
+                        <div class= "location_wrapper">
+                            <img src="assets/location_dot.png">
+                            <p>0.5km</p>
+                        </div>
+                        <span style="width:<?php echo 150/100* $listing['freshness'];?>px;"></span>
+                    </div>
+
+                    <div class="user_wrapper"> <!-- Post owner goes here -->
+                        <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
+                    </div>
                 </div>
-            </div></a>
+            </a>
             <!-- Single post end -->
             <?php endforeach; ?>
 
