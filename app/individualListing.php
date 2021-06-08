@@ -3,6 +3,22 @@
     include_once('isLoggedIn.inc.php'); 
     $listing = Listing::getListing($_GET['q']);
     $chat = User::getChat($_SESSION['userId']);
+
+    //Fancy algo for getting distance from 2 geo points
+    function getDistance($lat1, $lon1, $lat2, $lon2){
+        $pi80 = M_PI / 180; 
+        $lat1 *= $pi80; 
+        $lon1 *= $pi80; 
+        $lat2 *= $pi80; 
+        $lon2 *= $pi80; 
+        $r = 6372.797; // mean radius of Earth in km 
+        $dlat = $lat2 - $lat1; 
+        $dlon = $lon2 - $lon1; 
+        $a = sin($dlat / 2) * sin($dlat / 2) + cos($lat1) * cos($lat2) * sin($dlon / 2) * sin($dlon / 2); 
+        $c = 2 * atan2(sqrt($a), sqrt(1 - $a)); 
+        $km = $r * $c; 
+        return round($km, 1); 
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +72,7 @@
 
         <div id="item_section_location">
             <img src="assets/icons/list_dot.png">
-            <p>0.5km van jou verwijderd</p>
+            <p><?php echo(getDistance($listing["longitude"], $listing["latitude"], $_SESSION["lon"], $_SESSION["lat"])) ?>km van jou verwijderd</p>
         </div>
         <br><br><br><br><br><br><br><br>
         <?php if($listing['user_id'] != $_SESSION['userId'] && User::getAvailableReactions($_SESSION['userId']) != 0): ?>
