@@ -512,6 +512,29 @@
             return $result;
         }
 
+        public static function getListingIdChats($listingId, $userId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM chat WHERE listing_id = :listingId AND receiver_id = :userId");
+            
+            $query->bindValue(":listingId", $listingId);
+            $query->bindValue(":userId", $userId);
+            $query->execute();
+            $result = $query->fetchAll();
+
+            return $result;
+        }
+
+        public static function getTitleByListingId($listingId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT title FROM listings WHERE id = :listingId");
+            
+            $query->bindValue(":listingId", $listingId);
+            $query->execute();
+            $result = $query->fetch();
+
+            return $result['title'];
+        }
+
     }
 
 ?>

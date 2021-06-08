@@ -34,8 +34,8 @@
         <div class="listing_wrapper">
             <img class="listing_img" src="post_uploads/<?php echo $listing['listing_image']; ?>">
             <h2><?php echo $listing['title']; ?></h2>
-            <div class="listing_buttons reactie_button">
-                <p id="reactie_title">Reacties</p>
+            <div class="listing_buttons reactie_button" data-listing="<?php echo $listing['id']; ?>">
+                <p id="reactie_title"  data-listing="<?php echo $listing['id']; ?>">Reacties</p>
                 <img src="assets/icons/message_white_icon.png">
             </div>
             <div class="listing_buttons verwijder_button" data-listing="<?php echo $listing['id']; ?>">
@@ -68,5 +68,6 @@
     <!-- end bottom navigation -->
     
     <script src="js/deleteListing.js"></script>
+    <script src="js/reactionChatList.js"></script>
 </body>
 </html>
