@@ -77,7 +77,10 @@
         <br><br><br><br><br><br><br><br>
         <?php if($listing['user_id'] != $_SESSION['userId'] && User::getAvailableReactions($_SESSION['userId']) != 0): ?>
             <a href="" data-receiver="<?php echo $listing['user_id']; ?>" data-listing="<?php echo $listing['id']; ?>" id="item_section_reactbtn" onclick="makeChat(event); makeChat(event);">Stuur een bericht</a>
+        <?php elseif(User::getAvailableReactions($_SESSION['userId']) == 0): ?>
+            <a href="premium.html" id="item_section_reactbtn">Meer reacties nodig?</a>
         <?php endif; ?>
+        
     </section>
 
     <!-- start bottom navigation -->
