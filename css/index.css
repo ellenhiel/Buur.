@@ -216,15 +216,12 @@ h2 {
     margin-left: 20%;
 }
 
-.spotlight a {
+.spotlight div img {
+    border: 1em solid #F3EFEF;
     background-color: #F3EFEF;
-    padding: 5em;
-    border-radius: 5%;
-}
-
-.spotlight a img {
-    margin-top: 5em;
-    margin-bottom: 4em;
+    border-radius: 1em;
+    margin-top: 1em;
+    width: 20em;
 }
 
 .spotlight button {
@@ -290,6 +287,11 @@ footer a {
 }
 
 @media (max-width: 660px) {
+    section, footer {
+        padding-top: 2em;
+        clip-path: none;
+    }
+
     .menu {
         position: relative;
         background-color: #16323E;
@@ -358,7 +360,7 @@ footer a {
     }
 
     section p {
-        margin-top: 6em;
+        margin-top: 4em;
         margin-left: 1em;
     }
     
@@ -367,9 +369,9 @@ footer a {
     }
 
     .fruit {
-        width: 20%;
+        width: 25%;
         margin-left: 55%;
-        margin-top: 0em;
+        margin-top: -3em;
     }
 
     .profielfoto {
@@ -384,11 +386,12 @@ footer a {
     }
 
     .gevervandedag p:first-child {
-        margin-top: 2em;
+        margin-top: 3em;
         margin-left: 20px;
     }
 
     .gevervandedag p {
+        margin-top: -1em;
         margin-left: 20px;
     }
 
@@ -428,6 +431,10 @@ footer a {
     .center {
         margin-left: 20px;
     }
+
+    #titleSpotlight {
+        margin-bottom: 1em;
+    }
     
     .spotlight p {
         margin-left: 20px;
@@ -444,7 +451,7 @@ footer a {
 
     .lastsection img:first-child {
         margin-left: 20px;
-        margin-top: -4em;
+        margin-top: -2em;
     }
     
     .lastsection div {
