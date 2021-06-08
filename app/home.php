@@ -26,6 +26,14 @@
         $km = $r * $c; 
         return round($km, 1); 
     }
+
+    function getDistanceLimit(){
+        if (empty($_GET)) {
+            return 20;
+        } else {
+            return $_GET["distance"];
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,30 +164,32 @@
         <section id="posts_section">
 
             <?php foreach($listings as $listing): ?>
-            <!-- Single post start -->
-            <a href="individualListing.php?q=<?php echo $listing['id'] ?>">
-                <div class="post_wrapper">
+                <?php if(getDistance($listing["longitude"], $listing["latitude"], $_SESSION["lon"], $_SESSION["lat"]) < getDistanceLimit()): ?>
+                    <!-- Single post start -->
+                    <a href="individualListing.php?q=<?php echo $listing['id'] ?>">
+                        <div class="post_wrapper">
 
-                    <div class="image_wrapper"> <!-- Post image goes here -->
-                        <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
-                    </div>
+                            <div class="image_wrapper"> <!-- Post image goes here -->
+                                <img src="post_uploads/<?php echo $listing['listing_image'] ?>">
+                            </div>
 
-                    <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
-                        <h3><?php echo $listing['title']; ?></h3>
+                            <div class="info_wrapper"> <!-- Post info goes here (name, distance, freshness) -->
+                                <h3><?php echo $listing['title']; ?></h3>
 
-                        <div class= "location_wrapper">
-                            <img src="assets/location_dot.png">
-                            <p><?php echo(getDistance($listing["longitude"], $listing["latitude"], $_SESSION["lon"], $_SESSION["lat"])) ?>km</p>
+                                <div class= "location_wrapper">
+                                    <img src="assets/location_dot.png">
+                                    <p><?php echo(getDistance($listing["longitude"], $listing["latitude"], $_SESSION["lon"], $_SESSION["lat"])) ?>km</p>
+                                </div>
+                                <span style="width:<?php echo 150/100* $listing['freshness'];?>px;"></span>
+                            </div>
+
+                            <div class="user_wrapper"> <!-- Post owner goes here -->
+                                <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
+                            </div>
                         </div>
-                        <span style="width:<?php echo 150/100* $listing['freshness'];?>px;"></span>
-                    </div>
-
-                    <div class="user_wrapper"> <!-- Post owner goes here -->
-                        <img src="profile_pictures/<?php echo User::getProfilePictureById($listing['user_id']); ?>">
-                    </div>
-                </div>
-            </a>
-            <!-- Single post end -->
+                    </a>
+                    <!-- Single post end -->
+                <?php endif; ?>
             <?php endforeach; ?>
 
         </section>

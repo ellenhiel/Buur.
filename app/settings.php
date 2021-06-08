@@ -104,7 +104,7 @@
 
             <div>
                 <label for="username">Gebruikersnaam</label>
-                <input type="text" id="username" name="username" placeholder="<?php echo User::getUsernameById($userId); ?>"> <!-- Default value needs to be the current users username -->
+                <input type="text" id="username" name="username" value="<?php echo User::getUsernameById($userId); ?> " placeholder="type hier je gebruikersnaam"> <!-- Default value needs to be the current users username -->
             </div>
 
             <input type="image" src="assets/icons/checkmark_white.png" alt="Submit" id="submit_button">
