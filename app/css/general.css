@@ -503,6 +503,12 @@ form input::placeholder {
 }
 
 /*chat.php specific styling*/
+#noMessagePlaceholder {
+    width: 20em;
+    height: 20em;
+    align-self: center;
+}
+
 #chat_section {
     position: fixed;
     width: 19.5em;
