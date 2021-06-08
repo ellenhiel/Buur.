@@ -436,6 +436,17 @@ form input::placeholder {
 }
 
 /*chats.php specific styling*/
+#markAsSaved {
+    background-color: transparent;
+    color: var(--accentGreen);
+    text-decoration: underline;
+    font-size: 1em;
+}
+
+#markedCheckbox {
+    visibility: hidden;
+}
+
 .messages_section {
     display: flex;
     flex-direction: column;

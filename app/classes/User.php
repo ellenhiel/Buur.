@@ -380,24 +380,53 @@
             return $result;
         }
 
-        // get messages on the left side (from other person)
-        public static function getMessagesLeft($chatId) {
+        public static function markAsSaved($sender, $receiver) {
+            //Remove chat from chat table
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM chats WHERE chat_id_receiver = :chatId");
+            $query = $conn->prepare("DELETE FROM chat where receiver_id = :receiver AND sender_id = :sender OR receiver_id = :sender AND sender_id = :receiver");
+
+            $query->bindValue(":sender", $sender);
+            $query->bindValue(":receiver", $receiver);
+            $result = $query->execute();
+
+            //Increase product score counter
+            $conn = Database::getConnection();
+            $query = $conn->prepare("UPDATE users SET products_saved = products_saved + 1 WHERE id = :sender OR id = :receiver");
+
+            $query->bindValue(":sender", $sender);
+            $query->bindValue(":receiver", $receiver);
+            $result = $query->execute();
+
+            //Remove the messages from the chats table
+            $conn = Database::getConnection();
+            $query = $conn->prepare("DELETE FROM chats WHERE chat_id_sender = :sender AND chat_id_receiver = :receiver OR chat_id_sender = :receiver AND chat_id_receiver = :sender");
+
+            $query->bindValue(":sender", $sender);
+            $query->bindValue(":receiver", $receiver);
+            $result = $query->execute();
+
+            return $result;
+        }
+
+        // get all messages of a given receiver and sender id
+        public static function getAllMessages($rightId, $leftId) {
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT * FROM `chats` WHERE chat_id_sender = :leftId AND chat_id_receiver = :rightId OR chat_id_receiver = :leftId AND chat_id_sender = :rightId ORDER BY time ASC");
             
-            $query->bindValue(":chatId", $chatId);
+            $query->bindValue(":rightId", $rightId);
+            $query->bindValue(":leftId", $leftId);
             $query->execute();
             $result = $query->fetchAll();
 
             return $result;
         }
 
-        // get messages on the right side (from yourself)
-        public static function getMessagesRight($chatId) {
+        public static function getChatIdByReceiverSender($sender, $receiver){
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM chats WHERE chat_id_sender = :chatId");
+            $query = $conn->prepare("SELECT id FROM `chat` WHERE receiver_id = :receiver AND sender_id = :sender  OR receiver_id = :sender AND sender_id = :receiver");
             
-            $query->bindValue(":chatId", $chatId);
+            $query->bindValue(":sender", $sender);
+            $query->bindValue(":receiver", $receiver);
             $query->execute();
             $result = $query->fetchAll();
 

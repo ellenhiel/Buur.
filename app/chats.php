@@ -30,12 +30,12 @@
     <section class="messages_section">
 
         <?php foreach($chats as $chat): ?>
-        <!-- Start chats -->
-        <a href="chat.php?q=<?php echo $chat['id']; ?>?&b=<?php echo $chat['sender_id']; ?>" class="message_wrapper">
-            <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat['sender_id']); ?>">
-            <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
-            <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $chat['id']; ?>">
-        </a>
+            <!-- Start chats -->
+            <a href="chat.php?q=<?php echo $chat['receiver_id']; ?>?&b=<?php echo $chat['sender_id']; ?>" class="message_wrapper">
+                <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat['sender_id']); ?>">
+                <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
+                <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $chat['id']; ?>">
+            </a>
 
         <div class="divider"></div>
         <!-- End chats -->

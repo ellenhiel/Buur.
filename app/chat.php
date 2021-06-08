@@ -1,8 +1,9 @@
 <?php 
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
-    $messagesLeft = User::getMessagesLeft($_GET['q']);
-    $messagesRight = User::getMessagesRight($_GET['q']);
+
+    $allMessages = User::getAllMessages($_GET['q'], $_GET['b']);
+    $chatIds = User::getChatIdByReceiverSender($_GET['q'], $_GET['b']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,38 +26,47 @@
     <header>
         <img src="assets/location_dot.png">
         <h2><?php echo htmlspecialchars(User::getUsernameById($_GET['b']));?></h2>
-        <img id="exit_icon" src="assets/icons/exit_icon.png">
+        <a href="javascript:javascript:history.go(-1)">
+            <img id="exit_icon" src="assets/icons/exit_icon.png">
+        </a>
     </header>
     <!-- end top bar -->
 
     <!-- Start chat messages section -->
     <section class="messenger_section">
-        <!-- Example incoming message -->
-        <?php foreach($messagesLeft as $messageLeft): ?>
-        <?php foreach($messagesRight as $messageRight): ?>
-        <?php if(strtotime($messageLeft['time']) < strtotime($messageRight['time'])): ?>
-        
-            <div class="incoming_message_wrapper">
-             <img src="profile_pictures/<?php echo User::getProfilePictureById($_GET['b']); ?>">
-            <div data-origin="incoming">
-                <p>
-                    <?php echo htmlspecialchars($messageLeft['message']); ?>
-                </p>
-            </div>
-        </div>
 
-        <?php else: ?>
-        <!-- Example outgoing message -->
-        <div data-origin="outgoing">
-            <p>
-                <?php echo htmlspecialchars($messageRight['message']); ?>
-            </p>
-        </div>
-        <?php endif; ?>
+        
+        <?php foreach($allMessages as $message): ?>
+            <?php if($message["chat_id_sender"] != substr($_GET["q"], 0, -1)): ?>
+
+                    <!-- Example incoming message -->
+                    <div class="incoming_message_wrapper">
+                        <img src="profile_pictures/<?php echo User::getProfilePictureById($_GET['b']); ?>">
+                        <div data-origin="incoming">
+                            <p>
+                                <?php echo htmlspecialchars($message['message']); ?>
+                            </p>
+                        </div>
+                    </div>
+
+                <?php else: ?>
+
+                    <!-- Example outgoing message -->
+                    <div data-origin="outgoing">
+                        <p>
+                            <?php echo htmlspecialchars($message['message']); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
         <?php endforeach; ?>
-        <?php endforeach; ?>
+        <br>
     </section>
     <!-- End chat messages section -->
+    <form action="" method="post">
+        <input id="markAsSaved" type="submit" value="Markeer als gered" data-chat-sender="<?php echo(substr($_GET["q"], 0, -1)); ?>" data-chat-receiver="<?php echo($_GET["b"]); ?>">
+    </form>
+
+        <br><br><br><br><br><br><br><br>
     
     <!-- Start message input section -->
     <section id="chat_section">
@@ -77,5 +87,6 @@
     </nav>
     <!-- end bottom navigation -->
     <script src="js/sendMessage.js"></script>
+    <script src="js/markAsSaved.js"></script>
 </body>
 </html>
