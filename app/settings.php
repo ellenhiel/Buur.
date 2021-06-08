@@ -112,7 +112,7 @@
     </section>
 
     <a href="premium.html" id="get_premium_button">Word nu premium!</a>
-    <a href="#" id="logout_button">Afmelden</a>
+    <a href="logout.php" id="logout_button">Afmelden</a>
 
 </body>
 </html>

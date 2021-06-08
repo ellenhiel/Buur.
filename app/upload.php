@@ -41,8 +41,10 @@
         <?php echo($error) ?>
     <?php endif; ?>
 
+    <p id="locationError">We hebben je locatie nodig om iets te posten <br> Je kan deze terug aanzetten in de applicatie settings</p>
+
     <section class="upload_section">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="uploadForm" action="" method="post" enctype="multipart/form-data" onsubmit="submitPost(event)">
 
             <div id="image_input_wrapper">
                 <label for="image_input">
@@ -76,6 +78,8 @@
                     <label for="andere">Andere</label>
                 </div>
             </div>
+            <input type="hidden" id="userLon" name="userLon"></input>
+            <input type="hidden" id="userLat" name="userLat"></input>
             <br><br><br><br><br>
             <input type="image" src="assets/icons/checkmark_white.png" alt="Submit" id="btn_submit">
 
@@ -93,5 +97,6 @@
     <!-- end bottom navigation -->
 
     <script src="js/imagePreview.js"></script>
+    <script src="js/formSubmitLocation.js"></script>
 </body>
 </html>

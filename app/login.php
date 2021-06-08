@@ -6,7 +6,7 @@
       header("Location: home.php");   
     }
 
-    if(isset($_POST["logIn"])) {
+    if(!empty($_POST)) {
         $email = $_POST["email"];
         $password = $_POST["password"];
 
@@ -14,6 +14,8 @@
             $_SESSION['email'] = $email;
             $_SESSION['loggedIn'] = true;
             $_SESSION['userId'] = User::getUserIdByEmail($email);
+            $_SESSION['lon'] = $_POST["userLon"];
+            $_SESSION['lat'] = $_POST["userLat"];
 
             header("Location: home.php");
         } else {
@@ -43,9 +45,11 @@
     <header>
         <img id="nav_logo" src="assets/logo.png">
     </header>
+
+    <p id="locationError">De applicatie heeft je locatie nodig om te starten <br>Je kan dit aanzetten in de applicatie settings</p>
     
     <section class="login_registration_section">
-        <form action="" method="post">
+        <form id="formLogin" action="" method="post" onsubmit="submitPost(event)">
 
             <div>
                 <label for="email">Email</label>
@@ -57,11 +61,16 @@
                 <input type="password" id="password" name="password" placeholder="************">
             </div>
 
+            <input type="hidden" id="userLon" name="userLon"></input>
+            <input type="hidden" id="userLat" name="userLat"></input>
+
             <input type="submit" name="logIn" id="btn_submit" value="inloggen">
 
         </form>
     
         <a href="registration.php">Nog geen account? <br> Registreer hier</a>
     </section>
+
+    <script src="js/sessionLocation.js"></script>
 </body>
 </html>

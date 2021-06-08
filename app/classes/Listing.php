@@ -7,6 +7,8 @@
         private $freshness;
         private $date;
         private $category;
+        private $lon;
+        private $lat;
         private $listingId;
         
 
@@ -57,6 +59,22 @@
             $this->category = $category;
         }
 
+        public function getLongitude(){
+            return $this->lon;
+        }
+        
+        public function setLongitude($lon){
+            $this->lon = $lon;
+        }
+
+        public function getLatitude(){
+            return $this->lat;
+        }
+
+        public function setLatitude($lat){
+            $this->lat = $lat;
+        }
+
         public function getCategory(){
             return $this->category;
         }
@@ -84,7 +102,7 @@
 
         public function submit(){
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO listings (user_id, title, listing_image, freshness, date, category) VALUES (:userId, :title, :picture, :freshness, :date, :category)");
+            $query = $conn->prepare("INSERT INTO listings (user_id, title, listing_image, freshness, date, category, longitude, latitude) VALUES (:userId, :title, :picture, :freshness, :date, :category, :lon, :lat)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":picture", $this->picture);
@@ -92,6 +110,8 @@
             $query->bindValue(":freshness", $this->freshness);
             $query->bindValue(":date", $this->date);
             $query->bindValue(":category", $this->category);
+            $query->bindValue(":lon", $this->lon);
+            $query->bindValue(":lat", $this->lat);
 
             $result = $query->execute();
             return $result; 

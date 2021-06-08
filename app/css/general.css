@@ -348,6 +348,17 @@ form input::placeholder {
 }
 
 /*Upload page specific styling*/
+#locationError {
+    background-color: var(--warningRed);
+    color: var(--offWhite);
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    text-align: center;
+    visibility: hidden;
+    transition: 0.5s;
+    margin: 0;
+}
+
 .upload_section {
     margin-left: var(--whiteSpaceOffset);
     margin-right: var(--whiteSpaceOffset);
@@ -771,7 +782,8 @@ form input::placeholder {
 }
 
 .profile_edit_section #pfp_preview {
-    width: 50%;
+    width: 7em;
+    height: 7em;
     border-radius: 50%;
     object-fit: cover;
 }
