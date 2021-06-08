@@ -818,15 +818,16 @@ form input::placeholder {
     background: linear-gradient(50deg, rgba(120,181,62,1) 0%, rgba(196,231,43,1) 99%);color: var(--offWhite);
     font-size: var(--titleFontSize);
     display: block;
-    margin-left: var(--whiteSpaceOffset);
-    margin-right: var(--whiteSpaceOffset);
     margin-top: 3em;
     text-align: center;
 
+    margin-left: 20%;
+    margin-right: 20%;
 
     padding-top: 0.6em;
     padding-bottom: 0.6em;
     border-radius: 8px;
+    
 }
 
 #logout_button {
