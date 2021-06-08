@@ -29,7 +29,7 @@
 
     <section class="messages_section">
 
-        <?php if(true): ?>
+        <?php if(count($chats) == 0): ?>
             <img id="noMessagePlaceholder" src="assets/icons/no_messages_icon.png">
         <?php else: ?>
             <?php foreach($chats as $chat): ?>
