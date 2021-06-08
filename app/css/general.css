@@ -592,7 +592,7 @@ form input::placeholder {
 #user_info_wrapper div a {
     color: var(--accentGreen);
     text-decoration: underline;
-    font-size: var(--titleFontSize);
+    font-size: 1.5em;
 }
 
 #user_info_wrapper img {
