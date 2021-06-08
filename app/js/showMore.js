@@ -60,11 +60,11 @@ function createPostDiv(item) {
     "<span style='width:"+ 150/100*item["freshness"] +"px;'></span>"+
     "</div>"+
     "<div class='user_wrapper'>"+
-    "<img src='profile_pictures/"+ item[7] +"'>"+
+    "<img src='profile_pictures/"+ item[9] +"'>"+
     "</div>"+
     "</div>";
     a_post_wrapper.append(post_wrapper);
-    console.log(a_post_wrapper);
+    console.log(item);
     return a_post_wrapper;
 }
 

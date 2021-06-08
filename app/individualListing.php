@@ -59,8 +59,8 @@
             <p>0.5km van jou verwijderd</p>
         </div>
         <br><br><br><br><br><br><br><br>
-        <?php if($listing['user_id'] != $_SESSION['userId']): ?>
-        <a href="" data-receiver="<?php echo $listing['user_id']; ?>" id="item_section_reactbtn" onclick="makeChat(event)">Stuur een bericht</a>
+        <?php if($listing['user_id'] != $_SESSION['userId'] && User::getAvailableReactions($_SESSION['userId']) != 0): ?>
+        <a href="" data-receiver="<?php echo $listing['user_id']; ?>" data-listing="<?php echo $listing['id']; ?>" id="item_section_reactbtn" onclick="makeChat(event)">Stuur een bericht</a>
         <?php endif; ?>
     </section>
 

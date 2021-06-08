@@ -170,7 +170,7 @@
 
         public static function getMorePosts($start, $end) {
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT * FROM listings LIMIT ".$start.", ".$end);
+            $query = $conn->prepare("SELECT * FROM listings ORDER BY date DESC LIMIT ".$start.", ".$end);
             
             $query->execute();
             $listings = $query->fetchAll();
