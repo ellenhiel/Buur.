@@ -5,6 +5,7 @@
         session_start();
         $userId = $_SESSION['userId'];
         $receiverId = $_POST['receiver'];
+        $listingId = $_POST['listing'];
         $chat = User::openChat($_SESSION['userId'], $receiverId);
 
         if(User::chatExists($userId, $receiverId)){
@@ -16,6 +17,7 @@
             $user = new User();
             $user->setUserId($_SESSION['userId']);
             $user->setReceiverId($receiverId);
+            $user->setListingId($listingId);
 
             $result1 = $user->makeChat1();
             $result2 = $user->makeChat2();

@@ -1,12 +1,14 @@
-
 var receiver;
+var listing;
 
 function makeChat(e) {
-    receiver = e.path[0].dataset.receiver; // first make dataset
+    receiver = e.path[0].dataset.receiver; // get receiverId
+    listing = e.path[0].dataset.listing; // get listingId
 
     var formData = new FormData();
 
     formData.append("receiver", receiver);
+    formData.append("listing", listing);
 
     fetch("./ajax/makeChat.php", {
         method: "POST",

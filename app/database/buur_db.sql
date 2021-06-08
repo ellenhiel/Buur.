@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 07, 2021 at 03:07 PM
+-- Generation Time: Jun 08, 2021 at 12:21 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -31,18 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `receiver_id` int(255) NOT NULL,
-  `sender_id` int(255) NOT NULL
+  `sender_id` int(255) NOT NULL,
+  `listing_id` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `chat`
 --
 
-INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`) VALUES
-(1, 4, 2),
-(2, 2, 4),
-(4, 5, 2),
-(7, 2, 5);
+INSERT INTO `chat` (`id`, `receiver_id`, `sender_id`, `listing_id`) VALUES
+(1, 4, 2, 2),
+(2, 2, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -99,9 +98,9 @@ INSERT INTO `listings` (`id`, `user_id`, `title`, `listing_image`, `freshness`, 
 (9, 4, 'vegetables', '2_post_20210601114233.jpg', 59, '2021-06-01 11:42:33', 'groenten'),
 (10, 2, 'nice fruit yes', '2_post_20210531194040.jpg', 74, '2021-05-31 19:40:40', 'fruit'),
 (11, 2, 'Cola', '2_post_20210607133201.jpg', 100, '2021-06-07 13:32:01', 'andere'),
-(12, 2, 'appel cider', '2_post_20210607133535.jpg', 100, '2021-06-07 13:35:35', 'andere'),
+(12, 5, 'appel cider', '2_post_20210607133535.jpg', 100, '2021-06-07 13:35:35', 'andere'),
 (13, 2, '2 zakjes witte thee', '2_post_20210607133555.jpg', 100, '2021-06-07 13:35:55', 'andere'),
-(14, 2, 'Bruine suiker', '2_post_20210607133612.jpg', 72, '2021-06-07 13:36:12', 'andere'),
+(14, 5, 'Bruine suiker', '2_post_20210607133612.jpg', 72, '2021-06-07 13:36:12', 'andere'),
 (15, 2, 'Ananas :)', '2_post_20210607133628.jpg', 31, '2021-06-07 13:36:28', 'fruit'),
 (16, 2, 'worteltjes', '2_post_20210607133643.jpg', 72, '2021-06-07 13:36:43', 'groenten'),
 (18, 2, 'Bailey 4 sale', '2_post_20210607142136.jpg', 100, '2021-06-07 14:21:36', 'andere');
@@ -129,9 +128,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `profile_picture`, `premium`, `reactions`, `products_saved`) VALUES
 (1, 'root', 'root', 'root', 'default.jpg', 0, 0, 0),
-(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602150641.jpg', 0, 2, 5),
+(2, 'ellen', '$2y$12$ZgHR/QaqzcruCktLjzhaB.cfSeLKSEiHjNLkM1rlOf63itxWq2YDi', 'ellen', '2_picture_20210602150641.jpg', 0, 1, 15),
 (4, 'Eva', '$2y$12$z6v2ayiwS42Jbvln9obdSeSXQHLRxVrxC/JKmzRDnvRHCFpz3lDyy', 'buur@gmail.com', 'default.jpg', 0, 2, 0),
-(5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'default.jpg', 0, 2, 0);
+(5, 'Thomas', '$2y$12$Cab8QlTNH4cdI.bZoCb/d.af/lpbz9v4cy3Ei9qWSBtcSV3TFraR6', 'thomas@gmail.com', 'default.jpg', 0, 1, 10);
 
 --
 -- Indexes for dumped tables
@@ -169,7 +168,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `chats`

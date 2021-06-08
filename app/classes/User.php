@@ -12,6 +12,7 @@
         private $chatId;
         private $receiverId;
         private $message;
+        private $listingId;
 
         const MIN_USERNAME = 5; //Minimum amount of username characters
         const MAX_USERNAME = 20; //Maximum amount of username characters
@@ -89,6 +90,14 @@
 
         public function getDate(){
             return $this->date;
+        }
+
+        public function setListingId($listingId){
+            $this->listingId = $listingId;
+        }
+
+        public function getListingId(){
+            return $this->listingId;
         }
 
         public static function getUserIdByEmail($email){
@@ -465,10 +474,11 @@
 
         public function makeChat1(){ // when someone starts a convo
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id) VALUES (:userId, :receiverId)");
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id) VALUES (:userId, :receiverId, :listingId)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":receiverId", $this->receiverId);
+            $query->bindValue(":listingId", $this->listingId);
 
             $result = $query->execute();
 
@@ -477,10 +487,11 @@
 
         public function makeChat2(){ // when someone starts a convo
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id) VALUES (:receiverId, :userId)");
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id) VALUES (:receiverId, :userId, :listingId)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":receiverId", $this->receiverId);
+            $query->bindValue(":listingId", $this->listingId);
 
             $result = $query->execute();
 
