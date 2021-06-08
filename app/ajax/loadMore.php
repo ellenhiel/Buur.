@@ -3,16 +3,19 @@
 
     if (!empty($_POST)) {
 
-        $filtersArray = explode(',',$_POST["filters"]);
-        $distance = $filtersArray[1];
+        
         $finalResult = [];
 
         if ($_POST["filters"] == "0") {
             $result = Listing::getMorePosts($_POST["postStart"], $_POST["postEnd"]);
             $filters = "no";
+            $distance = 20;
         } else {
             $result = Listing::getMorePostsFilter($_POST["postStart"], $_POST["postEnd"], $_POST["filters"]);
             $filters = "yes";
+
+            $filtersArray = explode(',',$_POST["filters"]);
+            $distance = $filtersArray[1];
         }
 
         for ($i=0; $i < count($result) ; $i++) {

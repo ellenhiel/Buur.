@@ -39,8 +39,10 @@
             <?php if(!empty($listings)): ?>
                 <h1>Zoekresultaten voor "<?php echo $input ?>"</h1>
             <?php else: ?>
-                <h1>Er zijn geen zoekresultaten voor "<?php echo $input ?>"</h1>
-                <a href="search.php">Klik hier om opnieuw te proberen</a>
+                <div id="noResultsPage">
+                    <h1>Er zijn geen zoekresultaten voor "<?php echo $input ?>"</h1>
+                    <a id="noResultsLink" href="search.php">Klik hier om opnieuw te proberen</a>
+                </div>
             <?php endif; ?>
         </div>
         

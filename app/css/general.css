@@ -193,6 +193,13 @@ form input::placeholder {
 }
 
 /*home.php specific styling*/
+#noListingsImg {
+    width: 20em;
+    height: 20em;
+    display: block;
+    margin: auto;
+}
+
 .section_header_wrapper {
     display: flex;
     flex-direction: row;
@@ -326,6 +333,20 @@ form input::placeholder {
 }
 
 /*Search page specific styling*/
+#noResultsPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#noResultsLink {
+    color: var(--accentGreen);
+    padding-top: 2em;
+    text-decoration: underline;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .search_section {
     margin-left: var(--whiteSpaceOffset);
     margin-right: var(--whiteSpaceOffset);
@@ -503,6 +524,12 @@ form input::placeholder {
 }
 
 /*chat.php specific styling*/
+#noMessagePlaceholder {
+    width: 20em;
+    height: 20em;
+    align-self: center;
+}
+
 #chat_section {
     position: fixed;
     width: 19.5em;
@@ -679,6 +706,8 @@ form input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 20em;
 }
 
 #listings_section {
@@ -696,16 +725,18 @@ form input::placeholder {
     margin-bottom: 0.5em;
     width: 80%;
     object-fit: cover;
-    max-height: 7em;
+    max-height: 9em;
 }
 
 .listing_wrapper .listing_img {
     height: 10em;
+    flex-grow: 1;
 }
 
 .listing_wrapper h2 {
     margin-bottom: 0.5em;
     text-align: center;
+    flex-grow: 1;
 }
 
 .listing_buttons {
@@ -721,6 +752,7 @@ form input::placeholder {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .listing_buttons img { /*The icons in the buttons*/
@@ -742,6 +774,7 @@ form input::placeholder {
 
 .verwijder_button {
     background-color: var(--warningRed);
+    margin-bottom: 1em;
 }
 
 #add_listing_button {

@@ -2,6 +2,7 @@
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
     $listings = Listing::getListings();
+    $listingsFound = false;
 
     if (!empty($_GET)) {
         $sortBy = $_GET["sortBy"];
@@ -165,6 +166,7 @@
 
             <?php foreach($listings as $listing): ?>
                 <?php if(getDistance($listing["longitude"], $listing["latitude"], $_SESSION["lon"], $_SESSION["lat"]) < getDistanceLimit()): ?>
+                    <?php $listingsFound = true?>
                     <!-- Single post start -->
                     <a href="individualListing.php?q=<?php echo $listing['id'] ?>">
                         <div class="post_wrapper">
@@ -191,12 +193,16 @@
                     <!-- Single post end -->
                 <?php endif; ?>
             <?php endforeach; ?>
-
         </section>
         <!-- End of all posts -->
-        
-        <a href="#" id="show_more_btn">Toon meer</a>
 
+        <?php if(!$listingsFound): ?>
+            <a href="upload.php">
+                <img id="noListingsImg" src="assets/icons/no_listings.png">
+            </a>
+        <?php else: ?>
+            <a href="#" id="show_more_btn">Toon meer</a>
+        <?php endif; ?>
     </section>
 
     <!-- start bottom navigation -->
