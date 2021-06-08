@@ -63,6 +63,7 @@
         <br>
     </section>
     <!-- End chat messages section -->
+    <?php // als de session user id gelijk is aan de user id van de listing?>
     <form action="" method="post">
         <input id="markAsSaved" type="submit" value="Markeer als gered" data-chat-sender="<?php echo(substr($_GET["q"], 0, -1)); ?>" data-chat-receiver="<?php echo($_GET["b"]); ?>">
     </form>
