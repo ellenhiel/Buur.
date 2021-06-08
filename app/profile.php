@@ -30,7 +30,7 @@
     <div id="user_info_wrapper">
         <img src="profile_pictures/<?php echo User::getProfilePictureById($_SESSION['userId']); ?>">
         <div>
-            <h1><?php echo htmlspecialchars(User::getUsernameById($_SESSION['userId'])); ?></h1>
+            <h1 id="profileName" ><?php echo htmlspecialchars(User::getUsernameById($_SESSION['userId'])); ?></h1>
             <br>
             <a href="myListings.php">Mijn zoekertjes</a>
         </div>

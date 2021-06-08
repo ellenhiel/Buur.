@@ -609,6 +609,11 @@ form input::placeholder {
 }
 
 /*profile.php specific styling*/
+#profileName {
+    width: 6em;
+    word-wrap: break-word;
+}
+
 #user_info_wrapper {
     display: flex;
     align-items: center;
