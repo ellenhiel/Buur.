@@ -706,6 +706,8 @@ form input::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    height: 20em;
 }
 
 #listings_section {
@@ -723,16 +725,18 @@ form input::placeholder {
     margin-bottom: 0.5em;
     width: 80%;
     object-fit: cover;
-    max-height: 7em;
+    max-height: 9em;
 }
 
 .listing_wrapper .listing_img {
     height: 10em;
+    flex-grow: 1;
 }
 
 .listing_wrapper h2 {
     margin-bottom: 0.5em;
     text-align: center;
+    flex-grow: 1;
 }
 
 .listing_buttons {
@@ -748,6 +752,7 @@ form input::placeholder {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 .listing_buttons img { /*The icons in the buttons*/
@@ -769,6 +774,7 @@ form input::placeholder {
 
 .verwijder_button {
     background-color: var(--warningRed);
+    margin-bottom: 1em;
 }
 
 #add_listing_button {
