@@ -1,3 +1,5 @@
+<!-- verander alle "http://localhost:8888/siteBuur/app/login.php" door een link naar de app
+     verander ook de enige link van "http://localhost:8888/siteBuur/app/registration.php" door een link naar de registratie in de app -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,8 +41,8 @@
             Dat is toch veel <strong>beter voor iedereen</strong>?
         </p>
         <div>
-            <a href="#"><button>Maak gratis je account aan!</button></a>
-            <a href="#"><button>Download de app!</button></a>
+            <a href="http://localhost:8888/siteBuur/app/registration.php"><button>Maak gratis je account aan!</button></a>
+            <a href="http://localhost:8888/siteBuur/app/login.php"><button>Download de app!</button></a>
         </div>
     </section>
 
@@ -76,12 +78,13 @@
         <img src="images/ajuin_tomaat_wortel-06.png" alt="groenten" class="greens1">
     </section>
 
-    <h1 class="center">Hoe red je artikelen?</h1>
+    <h1 class="center" id="hoewerkthet">Hoe red je artikelen?</h1>
     <section class="red">
+        <video autoplay muted loop class="video">
+            <source src="images/siteBuurVideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <img src="images/ajuin_tomaat_wortel-06.png" alt="groenten" class="greens2">
-        <div>
-            <p class="video">hier komt een video</p>
-        </div>
         <div class="stap">
             <p>1</p>
             <img src="images/eye.svg" alt="oog">
@@ -110,12 +113,15 @@
             <img src="images/callets.PNG" alt="post2">
             <img src="images/kruiden.PNG" alt="post3">
         </div>
-        <button id="download">Download nu de app</button>
+        <a href="http://localhost:8888/siteBuur/app/login.php"><button>Download nu de app</button></a>
     </section>
 
-    <h1 class="center">Maak de hele stad jouw Buur!</h1>
+    <h1 class="center" id="download">Maak de hele stad jouw Buur!</h1>
     <section class="lastsection">
-        <img src="#" alt="mockup app">
+        <video autoplay muted loop class="video">
+            <source src="images/registratieBuurVideo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div>
             <h3>Download de app nu! <br><br> Wat heb je te verliezen?</h3>
             <img src="images/app_store.svg" alt="app store">
@@ -124,9 +130,9 @@
     </section>
 
     <footer>
-        <a href="#">Home</a>
-        <a href="#">Hoe werkt het?</a>
-        <a href="#">Download</a>
+        <a href="index.html">Home</a>
+        <a href="#hoewerkthet">Hoe werkt het?</a>
+        <a href="#download">Download</a>
         <p>©Buur. 2021</p>
         <!--<img src="images/wortel-08.png" alt="wortel">-->
     </footer>
