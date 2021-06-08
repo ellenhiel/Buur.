@@ -473,11 +473,12 @@
 
         public function makeChat1(){ // when someone starts a convo
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id) VALUES (:userId, :receiverId, :listingId)");
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id, owner_id) VALUES (:userId, :receiverId, :listingId, :ownerId)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":receiverId", $this->receiverId);
             $query->bindValue(":listingId", $this->listingId);
+            $query->bindValue(":ownerId", $this->receiverId);
 
             $result = $query->execute();
 
@@ -486,11 +487,12 @@
 
         public function makeChat2(){ // when someone starts a convo
             $conn = Database::getConnection();
-            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id) VALUES (:receiverId, :userId, :listingId)");
+            $query = $conn->prepare("INSERT INTO chat (receiver_id, sender_id, listing_id, owner_id) VALUES (:receiverId, :userId, :listingId, :ownerId)");
             
             $query->bindValue(":userId", $this->userId);
             $query->bindValue(":receiverId", $this->receiverId);
             $query->bindValue(":listingId", $this->listingId);
+            $query->bindValue(":ownerId", $this->receiverId);
 
             $result = $query->execute();
 
@@ -532,6 +534,21 @@
             $result = $query->fetch();
 
             return $result['title'];
+        }
+
+        public static function isOwner($listingId, $userId){
+            $conn = Database::getConnection();
+            $query = $conn->prepare("SELECT owner_id FROM `chat`WHERE listing_id= :listingId LIMIT 1");
+            
+            $query->bindValue(":listingId", $listingId);
+            $query->execute();
+            $result = $query->fetch();
+
+            if($result["owner_id"] == $userId) {
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }

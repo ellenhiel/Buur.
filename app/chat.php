@@ -4,7 +4,6 @@
 
     $allMessages = User::getAllMessages($_GET['q'], $_GET['b']);
     $chatIds = User::getChatIdByReceiverSender($_GET['q'], $_GET['b']);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,10 +62,11 @@
         <br>
     </section>
     <!-- End chat messages section -->
-    <?php // als de session user id gelijk is aan de user id van de listing?>
+    <?php if(User::isOwner($_GET["listing"], $_SESSION["userId"])): ?>
     <form action="" method="post">
         <input id="markAsSaved" type="submit" value="Markeer als gered" data-chat-sender="<?php echo(substr($_GET["q"], 0, -1)); ?>" data-chat-receiver="<?php echo($_GET["b"]); ?>">
     </form>
+    <?php endif; ?>
 
         <br><br><br><br><br><br><br><br>
     

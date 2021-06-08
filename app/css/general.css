@@ -499,6 +499,7 @@ form input::placeholder {
     width: 4em;
     height: 4em;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .message_wrapper h3 {
