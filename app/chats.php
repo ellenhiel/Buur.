@@ -2,6 +2,9 @@
     include_once('core/autoload.php');
     include_once('isLoggedIn.inc.php'); 
     $chats = User::getChats($_SESSION['userId']);
+    if(isset($_GET['listingId'])) {
+        $listingIdChats = User::getListingIdChats($_GET['listingId'], $_SESSION['userId']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,13 @@
     <!-- start top bar -->
     <header>
         <img src="assets/location_dot.png">
-        <h2>Mijn berichten</h2>
+        <?php if(isset($_GET['listingId']) && $listingIdChats): ?> <!-- when specific listing is set -->
+            <h2>Reacties op "<?php echo User::getTitleByListingId($_GET['listingId']); ?>"</h2>
+        <?php elseif(isset($_GET['listingId']) && !$listingIdChats): ?>  <!-- normal heading -->
+            <h2>Reacties op "<?php echo User::getTitleByListingId($_GET['listingId']); ?>"</h2>
+        <?php else: ?>
+            <h2>Mijn berichten</h2>
+        <?php endif; ?>
     </header>
     <!-- end top bar -->
 
@@ -39,6 +48,33 @@
                     <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
                     <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $chat['id']; ?>">
                 </a>
+            <?php if(isset($_GET['listingId']) && $listingIdChats): ?> <!-- start specific listing when set -->
+
+                <?php foreach($listingIdChats as $listingIdChat): ?>
+                    <a href="chat.php?q=<?php echo $listingIdChat['receiver_id']; ?>?&b=<?php echo $listingIdChat['sender_id']; ?>" class="message_wrapper">
+                        <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($listingIdChat['sender_id']); ?>">
+                        <h3><?php echo htmlspecialchars(User::getUsernameById($listingIdChat['sender_id'])); ?></h3>
+                        <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $listingIdChat['id']; ?>">
+                    </a>
+                    <div class="divider"></div>
+                <?php endforeach; ?>  <!-- end specific listing when set -->
+
+            <?php elseif(isset($_GET['listingId']) && !$listingIdChats): ?>
+                <h2>Er zijn geen reacties.</h2>
+            <?php else: ?>
+
+                <?php foreach($chats as $chat): ?>
+                <!-- Start chats -->
+                <a href="chat.php?q=<?php echo $chat['receiver_id']; ?>?&b=<?php echo $chat['sender_id']; ?>" class="message_wrapper">
+                    <img class="user_image" src="profile_pictures/<?php echo User::getProfilePictureById($chat['sender_id']); ?>">
+                    <h3><?php echo htmlspecialchars(User::getUsernameById($chat['sender_id'])); ?></h3>
+                    <img class="delete_image" src="assets/icons/trash_icon.png" data-chat="<?php echo $chat['id']; ?>">
+                </a>
+                <div class="divider"></div>
+                <!-- End chats -->
+                <?php endforeach; ?>
+
+            <?php endif; ?>
 
             <div class="divider"></div>
             <!-- End chats -->

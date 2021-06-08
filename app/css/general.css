@@ -333,6 +333,20 @@ form input::placeholder {
 }
 
 /*Search page specific styling*/
+#noResultsPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#noResultsLink {
+    color: var(--accentGreen);
+    padding-top: 2em;
+    text-decoration: underline;
+    font-size: 1.5em;
+    text-align: center;
+}
+
 .search_section {
     margin-left: var(--whiteSpaceOffset);
     margin-right: var(--whiteSpaceOffset);
