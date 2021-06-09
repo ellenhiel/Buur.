@@ -1,10 +1,10 @@
 <?php
     const SETTINGS = [
         "db" => [
-            "user" => "root",
-            "password" => "root",
+            "user" => "bailela459_buur",
+            "password" => "buur",
             "host" => "localhost",
-            "dbName" => "buur_db"
+            "dbName" => "bailela459_buur"
         ]
         ];
 ?>
