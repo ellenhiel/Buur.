@@ -305,8 +305,8 @@ footer a {
 }
 
 @media (max-width: 442px) { 
-    #menuButton {
-        right: 20px;
+    #menuButton, .menu {
+        display: none;
     }
 
     .greens1 {
