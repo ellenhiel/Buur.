@@ -287,6 +287,25 @@ footer a {
 
 }
 
+@media (max-width: 442px) { 
+    #menuButton {
+        right: 20px;
+    }
+
+    .greens1 {
+        display: none;
+    }
+
+    .spotlight div img {
+        width: 15em;
+    }
+
+    .spotlight {
+        margin-top: -1em;
+    }
+
+}
+
 @media (max-width: 660px) {
     section, footer {
         padding-top: 2em;
