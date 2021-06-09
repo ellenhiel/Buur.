@@ -279,6 +279,23 @@ footer a {
     margin: 0.5em;
 }
 
+#downloadBtnBottom {
+    color: #16323E;
+    text-decoration: none;
+    font-family: RocknRoll One, Verdana;
+    font-size: 2em;
+    margin-bottom: 0.4em;
+}
+
+#downloadBtnBottom span{
+    text-decoration: underline;
+}
+
+#downloadWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (min-width: 660px) {
     nav div {
         float: right;
@@ -303,6 +320,7 @@ footer a {
     .spotlight {
         margin-top: -1em;
     }
+
 
 }
 
